@@ -1,0 +1,3 @@
+rootProject.name = 'RiskMngt'
+
+include ':app'
