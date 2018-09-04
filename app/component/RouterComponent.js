@@ -4,6 +4,7 @@ import HomeScreen from "./HomeScreen";
 import RescueScreen from "./RescueScreen";
 import RescueInfoScreen from "./RescueInfoScreen";
 import RescueMoreInfoScreen from "./RescueMoreInfoScreen";
+import DisastersScreen from "./DisastersScreen";
 
 const RouterComponent = StackNavigator(
   {
