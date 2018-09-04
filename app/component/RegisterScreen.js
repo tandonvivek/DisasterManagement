@@ -10,7 +10,7 @@ const instructions = Platform.select({
 });
 
 type Props = {};
-export default class DisastersScreen extends Component<Props> {
+export default class RegisterScreen extends Component<Props> {
     constructor(props) {
         super(props);
         this.state = {
@@ -43,8 +43,36 @@ export default class DisastersScreen extends Component<Props> {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Disaster screen:</Text>
-               
+                <Text>Login:</Text>
+                <TextInput style={styles.loginInput}
+                    value={this.state.username}
+                    onChangeText={(username) => this.setState({ username })}
+                    placeholder={'Username'} />
+                <TextInput style={styles.loginInput}
+                    value={this.state.password}
+                    onChangeText={(password) => this.setState({ password })}
+                    placeholder={'Password'}
+                    secureTextEntry={true} />
+                <Button
+                    title={'Login'}
+                    style={styles.input}
+                    onPress={(login) => this.setState({ login: true })}
+                // onPress={this.onLogin.bind(this)}
+                />
+                <Text>Or</Text>
+                <View style={styles.container}>
+                    <View style={styles.buttonRow}>
+                        <TouchableOpacity style={styles.buttonLeft} >
+                            <Image source={require("../assets/fb.png")} />
+                        </TouchableOpacity>
+                        <TouchableOpacity >
+                            <Image source={require("../assets/gp.png")} />
+                        </TouchableOpacity>
+                        <TouchableOpacity >
+                            <Image source={require("../assets/tw.png")} />
+                        </TouchableOpacity>
+                    </View>
+                </View>
             </View>
         );
     }

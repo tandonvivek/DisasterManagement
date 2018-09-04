@@ -16,7 +16,7 @@ export default class HomeScreen extends Component<Props> {
     this.state = {
       username: '',
       password: '',
-      login : false
+      login: false
     };
   }
   onLogin() {
@@ -52,7 +52,7 @@ export default class HomeScreen extends Component<Props> {
           </TouchableOpacity>
         </View>
         <View style={styles.buttonRow}>
-          <TouchableOpacity style={styles.buttonLeft} onPress={() => this.props.navigation.navigate("info")}>
+          <TouchableOpacity style={styles.buttonLeft} onPress={() => this.props.navigation.navigate("Disasters")}>
             <Image source={require("../assets/info.png")} />
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonRight} onPress={() => this.props.navigation.navigate("faq")}>
@@ -66,26 +66,17 @@ export default class HomeScreen extends Component<Props> {
         </View>
 
         <View style={styles.container}>
-        {this.state.login == false? 
-         <View style={styles.container}>
-         <Text>Login:</Text>
-          <TextInput style={styles.loginInput}
-            value={this.state.username}
-            onChangeText={(username) => this.setState({ username })}
-            placeholder={'Username'}/>
-          <TextInput style={styles.loginInput}
-            value={this.state.password}
-            onChangeText={(password) => this.setState({ password })}
-            placeholder={'Password'}
-            secureTextEntry={true}/>
-          <Button
-            title={'Login'}
-            style={styles.input}
-            onPress={(login) => this.setState({ login:true })}  
-           // onPress={this.onLogin.bind(this)}
-          />
-          </View>
-          : null }
+          {this.state.login == false ?
+            <View style={styles.buttonRow}>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate("Login")}>
+                <Image source={require("../assets/signIn.png")} />
+              </TouchableOpacity>
+              <Text>OR</Text>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate("Register")}>
+                <Image source={require("../assets/register.png")} />
+              </TouchableOpacity>
+            </View>
+            : null}
         </View>
       </View >
     );
