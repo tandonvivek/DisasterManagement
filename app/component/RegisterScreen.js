@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Button, Text, View, TextInput, ScrollView, Image, TouchableOpacity, Container } from 'react-native';
+import { Platform, StyleSheet, Button, Text, View, TextInput, Picker, ScrollView, Image, TouchableOpacity, Container } from 'react-native';
 
 
 const instructions = Platform.select({
@@ -14,9 +14,14 @@ export default class RegisterScreen extends Component<Props> {
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
-            password: '',
-            login: false
+            name: '',
+            pswd: '',
+            repswd: '',
+            login: false,
+            mobile: '',
+            otp: '',
+            gender: '',
+            dob: ''
         };
     }
     onLogin() {
@@ -25,8 +30,8 @@ export default class RegisterScreen extends Component<Props> {
         Alert.alert('Credentials', `${username} + ${password}`);
     }
     static navigationOptions = {
-        title: 'SAHARA',
-        headerTintColor: 'black',
+        title: 'REGISTER',
+        headerTintColor: 'white',
         headerstyle: {
             backgroundColor: 'rgb(47, 54, 61)',
             shadowOpacity: 0
@@ -43,186 +48,140 @@ export default class RegisterScreen extends Component<Props> {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Login:</Text>
-                <TextInput style={styles.loginInput}
-                    value={this.state.username}
-                    onChangeText={(username) => this.setState({ username })}
-                    placeholder={'Username'} />
-                <TextInput style={styles.loginInput}
-                    value={this.state.password}
-                    onChangeText={(password) => this.setState({ password })}
-                    placeholder={'Password'}
-                    secureTextEntry={true} />
-                <Button
-                    title={'Login'}
-                    style={styles.input}
-                    onPress={(login) => this.setState({ login: true })}
-                // onPress={this.onLogin.bind(this)}
-                />
-                <Text>Or</Text>
-                <View style={styles.container}>
+                <ScrollView>
                     <View style={styles.buttonRow}>
-                        <TouchableOpacity style={styles.buttonLeft} >
-                            <Image source={require("../assets/fb.png")} />
-                        </TouchableOpacity>
-                        <TouchableOpacity >
-                            <Image source={require("../assets/gp.png")} />
-                        </TouchableOpacity>
-                        <TouchableOpacity >
-                            <Image source={require("../assets/tw.png")} />
-                        </TouchableOpacity>
+                        <Text style={styles.textFont1}>Name:</Text>
+                        <TextInput style={styles.loginInput}
+                            value={this.state.name}
+                            onChangeText={(name) => this.setState({ name })}
+                            placeholder={'Name'} />
                     </View>
-                </View>
+                    <View style={styles.buttonRow}>
+                        <Text style={styles.textFont1}>Mobile:</Text>
+                        <TextInput style={styles.loginInput}
+                            value={this.state.mobile}
+                            onChangeText={(mobile) => this.setState({ mobile })}
+                            placeholder={'Mobile'} />
+                    </View>
+                    <View style={styles.buttonRow}>
+                        <Text style={styles.textFont1}>OTP:</Text>
+                        <TextInput style={styles.loginInput}
+                            value={this.state.otp}
+                            onChangeText={(otp) => this.setState({ otp })}
+                            placeholder={'Enter OTP here..'} />
+                    </View>
+                    <View style={styles.buttonRow}>
+                        <Text style={styles.textFont1}>Gender:</Text>
+                        <Picker
+                            style={styles.pickerStyl}
+                            selectedValue={this.state.gender} //onValueChange={null}
+                        >
+                            <Picker.Item label="Select Gender..." value="" />
+                            <Picker.Item label="Male" value="male" />
+                            <Picker.Item label="Female" value="female" />
+                        </Picker>
+                    </View>
+                    <View style={styles.buttonRow}>
+                        <Text style={styles.textFont1}>Password:</Text>
+                        <TextInput style={styles.loginInput}
+                            value={this.state.pwsd}
+                            onChangeText={(pswd) => this.setState({ pswd })}
+                            placeholder={'Password'}
+                            secureTextEntry={true} />
+                    </View>
+                    <View style={styles.buttonRow}>
+                        <Text style={styles.textFont1}>Re-enter Password:</Text>
+                        <TextInput style={styles.loginInput}
+                            value={this.state.repswd}
+                            onChangeText={(repswd) => this.setState({ repswd })}
+                            placeholder={'Re-Enter Password'}
+                            secureTextEntry={true} />
+                    </View>
+                    <View style={styles.buttonRow}>
+                        <Text style={styles.textFont1}>DOB:</Text>
+                        <TextInput style={styles.loginInput}
+                            value={this.state.dob}
+                            onChangeText={(dob) => this.setState({ dob })}
+                            placeholder={'Date of Birth'} />
+                    </View>
+                </ScrollView>
+                <TouchableOpacity style={styles.input} >
+                    <Button
+                        title={'Register'}
+                        onPress={() => this.props.navigation.navigate("HomeScreen")}
+                    // onPress={this.onLogin.bind(this)}
+                    />
+                </TouchableOpacity>
+
             </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
+    pickerStyl: {
+        width: '72%',
+        height: '100%',
+        borderWidth: 2,
+        borderColor: '#48BBEC',
+        borderRadius: 15,
+        color: 'black',
+        backgroundColor: 'white'
+    },
     loginInput: {
-        margin: 10,
         fontSize: 18,
+        width: '72%',
+        height: '82%',
         borderWidth: 1,
         borderColor: '#48BBEC',
         borderRadius: 8,
         color: 'black',
         backgroundColor: 'white'
     },
-    loginContainer: {
-        borderColor: '#ff6600',
-        borderWidth: 1,
-        width: 400,
-        borderRadius: 10,
-        margin: 20,
-        padding: 5,
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#ecf0f1'
-    },
-    label: {
-        color: '#0d8898',
-        fontSize: 20
-    },
-    alignRight: {
-        alignSelf: 'flex-end'
-    },
-    textInput: {
-        height: 80,
-        fontSize: 30,
-        backgroundColor: '#FFF'
-    },
-    transparentButton: {
-        marginTop: 30,
-        borderColor: '#3B5699',
-        borderWidth: 2
-    },
-    buttonBlueText: {
-        fontSize: 20,
-        color: '#3B5699'
-    },
-    buttonBigText: {
-        fontSize: 20,
+    textFont1: {
+        fontSize: 18,
+        color: 'white',
+        width: 100,
         fontWeight: 'bold'
     },
-    inline: {
-        flexDirection: 'row'
+    buttonRow: {
+        padding: 5,
+        flexDirection: 'row',
+        marginLeft: 8,
+        marginRight: 8,
+        marginTop: 4,
+        marginBottom: 4,
     },
-    buttonWhiteText: {
-        fontSize: 20,
-        color: '#FFF',
+    textFont: {
+        fontSize: 24,
+        marginLeft: 10,
+        color: 'white',
+        marginTop: 10,
+        marginBottom: 5,
+        textAlign: 'center',
+        fontWeight: 'bold'
     },
-    buttonBlackText: {
-        fontSize: 20,
-        color: '#595856'
+
+    otherImg: {
+        padding: 30,
+        paddingLeft: 0,
+        marginLeft: 15
     },
-    primaryButton: {
-        backgroundColor: '#34A853'
-    },
-    footer: {
-        marginTop: 100
-    },
+
     container: {
         flex: 1,
         marginTop: 10,
-        backgroundColor: 'red',
-        color: 'red',
-    },
-    container1: {
-        flex: 1,
-        padding: 5,
-    },
-    loginButton: {
-        marginTop: 250,
-        marginLeft: 105,
-        backgroundColor: 'red',
-        borderColor: 'black',
-        borderWidth: 1,
-        width: 120,
-        borderRadius: 10,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    button: {
-        marginTop: 250,
-        marginLeft: 105,
-        backgroundColor: 'white',
-        borderColor: '#ff6600',
-        borderWidth: 1,
-        width: 120,
-        borderRadius: 10,
-        alignItems: 'center',
-        justifyContent: 'center'
+        backgroundColor: 'red'
     },
     panicBtn: {
         padding: 10,
         margin: 10,
         marginLeft: 60
     },
-    buttonRow: {
-        padding: 10,
-        flexDirection: 'row',
-        margin: 20
-    },
     buttonLeft: {
         marginLeft: 5
     },
     buttonRight: {
         marginLeft: 130
-    },
-    description: {
-        marginBottom: 10,
-        fontSize: 18,
-        marginLeft: 100,
-        color: 'black'
-    },
-    searchInput: {
-        height: 45,
-        marginRight: 5,
-        flexGrow: 1,
-        fontSize: 18,
-        borderWidth: 1,
-        borderColor: '#48BBEC',
-        borderRadius: 8,
-        color: 'black',
-        backgroundColor: 'white',
-    },
-    header: {
-
-    },
-    label: {
-        width: 100,
-        marginLeft: 0,
-        color: 'black',
-        fontSize: 18
-    },
-    scrollContainer: {
-
-    },
-    footer: {
-
-    },
-    textInput: {
-
     }
 });

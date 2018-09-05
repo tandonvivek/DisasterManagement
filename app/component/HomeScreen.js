@@ -16,7 +16,8 @@ export default class HomeScreen extends Component<Props> {
     this.state = {
       username: '',
       password: '',
-      login: false
+      login: false,
+      loginRegMsg: ''
     };
   }
   onLogin() {
@@ -26,7 +27,7 @@ export default class HomeScreen extends Component<Props> {
   }
   static navigationOptions = {
     title: 'SAHARA',
-    headerTintColor: 'black',
+    headerTintColor: 'white',
     headerstyle: {
       backgroundColor: 'rgb(47, 54, 61)',
       shadowOpacity: 0
@@ -41,8 +42,19 @@ export default class HomeScreen extends Component<Props> {
     tintColor: '#fefefe'
   };
   render() {
+    //const {navigate} = this.props.navigation;
+    const {state} = this.props.navigation;
+    var name = state.params ? state.params.name : "<undefined>";
+    var login = name.login ? name.login : false;
     return (
+     
+      
       <View style={styles.container}>
+        {name.login == true ?
+          <View style={styles.authBtn}>
+            <Text>{name.loginRegMsg}</Text>
+          </View>
+          : null}
         <View style={styles.buttonRow}>
           <TouchableOpacity style={styles.buttonLeft} onPress={() => this.props.navigation.navigate("Rescue")}>
             <Image source={require("../assets/provideHelp.png")} />
@@ -65,124 +77,43 @@ export default class HomeScreen extends Component<Props> {
           </TouchableOpacity>
         </View>
 
-        <View style={styles.container}>
-          {this.state.login == false ?
-            <View style={styles.buttonRow}>
-              <TouchableOpacity onPress={() => this.props.navigation.navigate("Login")}>
-                <Image source={require("../assets/signIn.png")} />
-              </TouchableOpacity>
-              <Text>OR</Text>
-              <TouchableOpacity onPress={() => this.props.navigation.navigate("Register")}>
-                <Image source={require("../assets/register.png")} />
-              </TouchableOpacity>
-            </View>
-            : null}
-        </View>
+        {login == false ?
+          <View style={styles.authBtn}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate("Login")}>
+              <Image source={require("../assets/signIn.png")} />
+            </TouchableOpacity>
+            <Text>   OR   </Text>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate("Register")}>
+              <Image source={require("../assets/register.png")} />
+            </TouchableOpacity>
+          </View>
+          : null}
       </View >
     );
   }
 }
 
 const styles = StyleSheet.create({
-  loginInput: {
-    margin: 10,
-    fontSize: 18,
-    borderWidth: 1,
-    borderColor: '#48BBEC',
-    borderRadius: 8,
-    color: 'black',
-    backgroundColor: 'white'
-  },
-  loginContainer: {
-    borderColor: '#ff6600',
-    borderWidth: 1,
-    width: 400,
-    borderRadius: 10,
-    margin: 20,
-    padding: 5,
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#ecf0f1'
-  },
-  label: {
-    color: '#0d8898',
-    fontSize: 20
-  },
-  alignRight: {
-    alignSelf: 'flex-end'
-  },
-  textInput: {
-    height: 80,
-    fontSize: 30,
-    backgroundColor: '#FFF'
-  },
-  transparentButton: {
-    marginTop: 30,
-    borderColor: '#3B5699',
-    borderWidth: 2
-  },
-  buttonBlueText: {
-    fontSize: 20,
-    color: '#3B5699'
-  },
-  buttonBigText: {
-    fontSize: 20,
-    fontWeight: 'bold'
-  },
-  inline: {
-    flexDirection: 'row'
-  },
-  buttonWhiteText: {
-    fontSize: 20,
-    color: '#FFF',
-  },
-  buttonBlackText: {
-    fontSize: 20,
-    color: '#595856'
-  },
-  primaryButton: {
-    backgroundColor: '#34A853'
-  },
-  footer: {
-    marginTop: 100
-  },
   container: {
     flex: 1,
     marginTop: 10,
     backgroundColor: 'red',
-    color: 'red',
+    padding: 30
   },
   container1: {
     flex: 1,
     padding: 5,
   },
-  loginButton: {
-    marginTop: 250,
-    marginLeft: 105,
-    backgroundColor: 'red',
-    borderColor: 'black',
-    borderWidth: 1,
-    width: 120,
-    borderRadius: 10,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  button: {
-    marginTop: 250,
-    marginLeft: 105,
-    backgroundColor: 'white',
-    borderColor: '#ff6600',
-    borderWidth: 1,
-    width: 120,
-    borderRadius: 10,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
   panicBtn: {
     padding: 10,
     margin: 10,
-    marginLeft: 60
+    marginLeft: 40
+  },
+  authBtn: {
+    padding: 10,
+    flexDirection: 'row',
+    margin: 20,
+    marginLeft: 50
   },
   buttonRow: {
     padding: 10,
@@ -190,16 +121,10 @@ const styles = StyleSheet.create({
     margin: 20
   },
   buttonLeft: {
-    marginLeft: 5
+    marginLeft: 0
   },
   buttonRight: {
     marginLeft: 130
-  },
-  description: {
-    marginBottom: 10,
-    fontSize: 18,
-    marginLeft: 100,
-    color: 'black'
   },
   searchInput: {
     height: 45,
@@ -211,23 +136,5 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     color: 'black',
     backgroundColor: 'white',
-  },
-  header: {
-
-  },
-  label: {
-    width: 100,
-    marginLeft: 0,
-    color: 'black',
-    fontSize: 18
-  },
-  scrollContainer: {
-
-  },
-  footer: {
-
-  },
-  textInput: {
-
   }
 });

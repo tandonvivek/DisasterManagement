@@ -25,8 +25,8 @@ export default class LoginScreen extends Component<Props> {
         Alert.alert('Credentials', `${username} + ${password}`);
     }
     static navigationOptions = {
-        title: 'SAHARA',
-        headerTintColor: 'black',
+        title: 'LOGIN',
+        headerTintColor: 'white',
         headerstyle: {
             backgroundColor: 'rgb(47, 54, 61)',
             shadowOpacity: 0
@@ -43,32 +43,35 @@ export default class LoginScreen extends Component<Props> {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Login:</Text>
+                <Text style={styles.textFont1}>Username</Text>
                 <TextInput style={styles.loginInput}
                     value={this.state.username}
                     onChangeText={(username) => this.setState({ username })}
                     placeholder={'Username'} />
+                <Text style={styles.textFont1}>Password</Text>
                 <TextInput style={styles.loginInput}
                     value={this.state.password}
                     onChangeText={(password) => this.setState({ password })}
                     placeholder={'Password'}
                     secureTextEntry={true} />
-                <Button
-                    title={'Login'}
-                    style={styles.input}
-                    onPress={(login) => this.setState({ login: true })}
-                // onPress={this.onLogin.bind(this)}
-                />
-                <Text>Or</Text>
+                <TouchableOpacity style={styles.input} >
+                    <Button
+                        title={'Login'}
+                        onPress={() => this.props.navigation.navigate("HomeScreen")}
+                    // onPress={this.onLogin.bind(this)}
+                    />
+                </TouchableOpacity>
+
+                <Text style={styles.or}>Or</Text>
                 <View style={styles.container}>
                     <View style={styles.buttonRow}>
-                        <TouchableOpacity style={styles.buttonLeft} >
+                        <TouchableOpacity style={styles.otherImg}>
                             <Image source={require("../assets/fb.png")} />
                         </TouchableOpacity>
-                        <TouchableOpacity >
+                        <TouchableOpacity style={styles.otherImg}>
                             <Image source={require("../assets/gp.png")} />
                         </TouchableOpacity>
-                        <TouchableOpacity >
+                        <TouchableOpacity style={styles.otherImg}>
                             <Image source={require("../assets/tw.png")} />
                         </TouchableOpacity>
                     </View>
@@ -79,6 +82,34 @@ export default class LoginScreen extends Component<Props> {
 }
 
 const styles = StyleSheet.create({
+    textFont: {
+        fontSize: 24,
+        marginLeft: 10,
+        color: 'white',
+        marginTop: 10,
+        textAlign: 'center',
+        fontWeight: 'bold'
+    },   
+    or: {
+        fontSize: 20,
+        marginLeft: 10,
+        color: 'white',
+        marginTop: 10,
+        textAlign: 'center',
+        fontWeight: 'bold',
+        marginTop: 70
+    },
+    textFont1: {
+        fontSize: 18,
+        color: 'white',
+        width: 100,
+        fontWeight: 'bold'
+    },
+    otherImg: {
+        padding: 30,
+        paddingLeft: 0,
+        marginLeft: 15
+    },
     loginInput: {
         margin: 10,
         fontSize: 18,
@@ -88,6 +119,7 @@ const styles = StyleSheet.create({
         color: 'black',
         backgroundColor: 'white'
     },
+    
     loginContainer: {
         borderColor: '#ff6600',
         borderWidth: 1,
@@ -145,8 +177,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         marginTop: 10,
-        backgroundColor: 'red',
-        color: 'red',
+        backgroundColor: 'red'
     },
     container1: {
         flex: 1,
@@ -207,22 +238,10 @@ const styles = StyleSheet.create({
         color: 'black',
         backgroundColor: 'white',
     },
-    header: {
-
-    },
     label: {
         width: 100,
         marginLeft: 0,
         color: 'black',
         fontSize: 18
-    },
-    scrollContainer: {
-
-    },
-    footer: {
-
-    },
-    textInput: {
-
     }
 });

@@ -29,6 +29,7 @@ const RouterComponent = StackNavigator(
       navigationOptions: {
         headerStyle: {
           backgroundColor: 'brown',
+          
         }
       }
     },
