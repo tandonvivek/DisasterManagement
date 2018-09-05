@@ -10,6 +10,22 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class RescueInfoScreen extends Component<Props> {
+  static navigationOptions = {
+    title: 'RESCUE ME - INFO',
+    headerTintColor: 'white',
+    headerstyle: {
+      backgroundColor: 'rgb(47, 54, 61)',
+      shadowOpacity: 0
+    },
+    headertitleStyle: {
+      color: '#fefefe',
+      fontFamily: 'MuseoSansRounded-300',
+      fontWeight: '300',
+      justifyContent: 'space-between',
+      textAlign: 'center'
+    },
+    tintColor: '#fefefe'
+  };
   render() {
     return (
       <View style={styles.container}>
@@ -70,7 +86,7 @@ const styles = StyleSheet.create({
     margin: 5,
     fontSize: 18,
     marginLeft: 10,
-    color: 'black',
+    color: 'white',
     alignItems: 'center',
     justifyContent: 'center',
   },

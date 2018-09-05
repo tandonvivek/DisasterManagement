@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Platform, StyleSheet,Button, Text, View,TextInput,Image, ScrollView, TouchableOpacity} from 'react-native';
+import React, { Component } from 'react';
+import { Platform, StyleSheet, Button, Text, View, TextInput, Image, ScrollView, TouchableOpacity } from 'react-native';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -11,66 +11,119 @@ const instructions = Platform.select({
 type Props = {};
 export default class RescueScreen extends Component<Props> {
   static navigationOptions = {
-    title: 'SAHARA',
+    title: 'RESCUE ME',
+    headerTintColor: 'white',
+    headerstyle: {
+      backgroundColor: 'rgb(47, 54, 61)',
+      shadowOpacity: 0
+    },
+    headertitleStyle: {
+      color: '#fefefe',
+      fontFamily: 'MuseoSansRounded-300',
+      fontWeight: '300',
+      justifyContent: 'space-between',
+      textAlign: 'center'
+    },
+    tintColor: '#fefefe'
   };
   render() {
     return (
-        <View style={styles.container}>
-           <ScrollView>
-                <Text style={styles.description}>Name:</Text>
-                <TextInput 
-                underlineColorAndroid={'transparent'}
-                style={styles.searchInput}
-                placeholder='Enter your name'/>    
-                <Text style={styles.description}>Mobile:</Text>
-                <TextInput 
-                underlineColorAndroid={'transparent'}
-                style={styles.searchInput}
-                placeholder='Enter your mobile number'/>   
-                <Text style={styles.description}>Comments:</Text>
-                <TextInput 
-                underlineColorAndroid={'transparent'}
-                style={styles.comment}
-                placeholder='Enter comments'/>   
-                <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate("RescueInfo")}>
-                  <Image source={require("../assets/rescueMe.png")}/>
-                </TouchableOpacity>
-          </ScrollView >
-        </View>
+      <View style={styles.container}>
+        <ScrollView>
+          <View style={styles.buttonRow}>
+            <Text style={styles.textFont1}>Name:</Text>
+            <TextInput
+              underlineColorAndroid={'transparent'}
+              style={styles.resInput}
+              placeholder='Enter your name' />
+          </View>
+          <View style={styles.buttonRow}>
+            <Text style={styles.textFont1}>Mobile:</Text>
+            <TextInput
+              underlineColorAndroid={'transparent'}
+              style={styles.resInput}
+              placeholder='Enter your mobile number' />
+          </View>
+          <View style={styles.buttonRow}>
+            <Text style={styles.textFont1}>Comments:</Text>
+            <TextInput
+              underlineColorAndroid={'transparent'}
+              style={styles.comment}
+              placeholder='Enter comments' />
+          </View>
+          <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate("RescueInfo")}>
+            <Image source={require("../assets/rescueMe.png")} />
+          </TouchableOpacity>
+        </ScrollView >
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  resInput: {
+    fontSize: 18,
+    width: '72%',
+    height: '82%',
+    borderWidth: 1,
+    borderColor: '#48BBEC',
+    borderRadius: 8,
+    color: 'black',
+    backgroundColor: 'white'
+  },
+  buttonRow: {
+    padding: 5,
+    flexDirection: 'row',
+    marginLeft: 8,
+    marginRight: 8,
+    marginTop: 4,
+    marginBottom: 4,
+  },
+  textFont: {
+    fontSize: 24,
+    marginLeft: 10,
+    color: 'white',
+    marginTop: 10,
+    marginBottom: 5,
+    textAlign: 'center',
+    fontWeight: 'bold'
+  },
+  textFont1: {
+    fontSize: 18,
+    color: 'white',
+    width: 100,
+    fontWeight: 'bold'
+  },
   container1: {
-   flex:1,
-   padding: 5
-    },
+    flex: 1,
+    padding: 5
+  },
   container: {
-    flex:1,
-    backgroundColor: 'red',
-    color: 'red',
-   },
-   button:{
-     marginTop:250,
-     marginLeft: 125,
+    flex: 1,
+    backgroundColor: 'red'
+  },
+  button: {
+    marginTop: 250,
+    marginLeft: 135,
     backgroundColor: 'white',
     borderColor: '#ff6600',
     borderWidth: 1,
-    width:120,
+    width: 120,
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center'
-     },
-    comment:{
-      fontSize: 18,
-      borderWidth: 1,
-      borderColor: '#48BBEC',
-      borderRadius: 8,
-      color: 'black',
-      height:100,
-      backgroundColor: 'white'
-      },
+  },
+  comment: {
+    fontSize: 18,
+    width: '72%',
+    height: '82%',
+    borderWidth: 1,
+    borderColor: '#48BBEC',
+    borderRadius: 8,
+    color: 'black',
+    backgroundColor: 'white',
+    height: 100,
+  },
   description: {
     margin: 5,
     fontSize: 18,
@@ -90,19 +143,19 @@ const styles = StyleSheet.create({
     color: 'black',
     backgroundColor: 'white'
   },
-  header:{
+  header: {
 
   },
-  headerText:  {
+  headerText: {
 
   },
-  scrollContainer:{
+  scrollContainer: {
 
   },
-  footer:{
+  footer: {
 
   },
-  textInput:{
+  textInput: {
 
   }
 });

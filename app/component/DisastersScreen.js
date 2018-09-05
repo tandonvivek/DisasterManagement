@@ -25,8 +25,8 @@ export default class DisastersScreen extends Component<Props> {
         Alert.alert('Credentials', `${username} + ${password}`);
     }
     static navigationOptions = {
-        title: 'SAHARA',
-        headerTintColor: 'black',
+        title: 'DISASTERS ',
+        headerTintColor: 'white',
         headerstyle: {
             backgroundColor: 'rgb(47, 54, 61)',
             shadowOpacity: 0
