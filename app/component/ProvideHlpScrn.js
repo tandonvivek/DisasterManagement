@@ -10,22 +10,15 @@ const instructions = Platform.select({
 });
 
 type Props = {};
-export default class LoginScreen extends Component<Props> {
+export default class ProvideHlpScrn extends Component<Props> {
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
-            password: '',
-            login: false
+
         };
     }
-    onLogin() {
-        const { username, password } = this.state;
-
-        Alert.alert('Credentials', `${username} + ${password}`);
-    }
     static navigationOptions = {
-        title: 'LOGIN',
+        title: 'PROVIDE HELP',
         headerTintColor: 'white',
         headerstyle: {
             backgroundColor: 'rgb(47, 54, 61)',
@@ -44,38 +37,16 @@ export default class LoginScreen extends Component<Props> {
         return (
             <View style={styles.container}>
                 <ScrollView>
-                    <Text style={styles.textFont1}>Username</Text>
-                    <TextInput style={styles.loginInput}
-                        value={this.state.username}
-                        onChangeText={(username) => this.setState({ username })}
-                        placeholder={'Username'} />
-                    <Text style={styles.textFont1}>Password</Text>
-                    <TextInput style={styles.loginInput}
-                        value={this.state.password}
-                        onChangeText={(password) => this.setState({ password })}
-                        placeholder={'Password'}
-                        secureTextEntry={true} />
-                    <TouchableOpacity style={styles.input} >
-                        <Button
-                            title={'Login'}
-                            onPress={() => this.props.navigation.navigate("HomeScreen")}
-                        // onPress={this.onLogin.bind(this)}
-                        />
-                    </TouchableOpacity>
-
-                    <Text style={styles.or}>Or</Text>
-                    <View style={styles.container}>
-                        <View style={styles.buttonRow}>
-                            <TouchableOpacity style={styles.otherImg}>
-                                <Image source={require("../assets/fb.png")} />
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.otherImg}>
-                                <Image source={require("../assets/gp.png")} />
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.otherImg}>
-                                <Image source={require("../assets/tw.png")} />
-                            </TouchableOpacity>
-                        </View>
+                    <View style={styles.btnsContainer}>
+                        <TouchableOpacity style={styles.buttonStyl} onPress={() => this.props.navigation.navigate("HomeScreen")} >
+                            <Text style={styles.btnText}>Create Camp</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.buttonStyl} onPress={() => this.props.navigation.navigate("HomeScreen")} >
+                            <Text style={styles.btnText}>Join Camp</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.buttonStyl} onPress={() => this.props.navigation.navigate("HomeScreen")} >
+                            <Text style={styles.btnText}>Help Camp</Text>
+                        </TouchableOpacity>
                     </View>
                 </ScrollView>
             </View>
@@ -84,6 +55,11 @@ export default class LoginScreen extends Component<Props> {
 }
 
 const styles = StyleSheet.create({
+    btnText: {
+        color: 'white',
+        fontSize: 18,
+
+    },
     textFont: {
         fontSize: 24,
         marginLeft: 10,
@@ -156,13 +132,18 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
-    button: {
-        marginTop: 250,
-        marginLeft: 105,
-        backgroundColor: 'white',
+    btnsContainer: {
+        margin: 20,
+    },
+    buttonStyl: {
+        padding: 20,
+        margin: 20,
+        marginLeft: 30,
+        backgroundColor: 'orange',
         borderColor: '#ff6600',
         borderWidth: 1,
-        width: 120,
+        width: 300,
+        height: 37,
         borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center'

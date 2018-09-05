@@ -58,17 +58,23 @@ export default class RegisterScreen extends Component<Props> {
                     </View>
                     <View style={styles.buttonRow}>
                         <Text style={styles.textFont1}>Mobile:</Text>
-                        <TextInput style={styles.loginInput}
+                        <TextInput style={styles.loginInputSmall}
                             value={this.state.mobile}
                             onChangeText={(mobile) => this.setState({ mobile })}
                             placeholder={'Mobile'} />
+                        <TouchableOpacity style={styles.smallBtn} >
+                            <Text style={styles.btnText}>Send OTP</Text>
+                        </TouchableOpacity>
                     </View>
                     <View style={styles.buttonRow}>
                         <Text style={styles.textFont1}>OTP:</Text>
-                        <TextInput style={styles.loginInput}
+                        <TextInput style={styles.loginInputSmall}
                             value={this.state.otp}
                             onChangeText={(otp) => this.setState({ otp })}
                             placeholder={'Enter OTP here..'} />
+                        <TouchableOpacity style={styles.smallBtn} >
+                            <Text style={styles.btnText}>Verify OTP</Text>
+                        </TouchableOpacity>
                     </View>
                     <View style={styles.buttonRow}>
                         <Text style={styles.textFont1}>Gender:</Text>
@@ -104,27 +110,51 @@ export default class RegisterScreen extends Component<Props> {
                             onChangeText={(dob) => this.setState({ dob })}
                             placeholder={'Date of Birth'} />
                     </View>
+                    <TouchableOpacity style={styles.input} >
+                        <Button
+                            title={'Register'}
+                            onPress={() => this.props.navigation.navigate("HomeScreen")}
+                        // onPress={this.onLogin.bind(this)}
+                        />
+                    </TouchableOpacity>
                 </ScrollView>
-                <TouchableOpacity style={styles.input} >
-                    <Button
-                        title={'Register'}
-                        onPress={() => this.props.navigation.navigate("HomeScreen")}
-                    // onPress={this.onLogin.bind(this)}
-                    />
-                </TouchableOpacity>
-
             </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
+    smallBtn: {
+        marginLeft: 5,
+        backgroundColor: '#80ff00',
+        borderColor: '#ff6600',
+        borderWidth: 1,
+        width: 95,
+        height: 40,
+        borderRadius: 10,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    btnText: {
+        color: 'white',
+        fontSize: 18
+    },
     pickerStyl: {
         width: '72%',
         height: '100%',
         borderWidth: 2,
         borderColor: '#48BBEC',
         borderRadius: 15,
+        color: 'black',
+        backgroundColor: 'white'
+    },
+    loginInputSmall: {
+        fontSize: 18,
+        width: '50%',
+        height: '82%',
+        borderWidth: 1,
+        borderColor: '#48BBEC',
+        borderRadius: 8,
         color: 'black',
         backgroundColor: 'white'
     },
@@ -167,11 +197,13 @@ const styles = StyleSheet.create({
         paddingLeft: 0,
         marginLeft: 15
     },
-
     container: {
         flex: 1,
-        marginTop: 10,
-        backgroundColor: 'red'
+        paddingTop:15,
+        backgroundColor: 'red',
+        flexDirection:'column',
+        alignItems:'center',
+        justifyContent:'center',
     },
     panicBtn: {
         padding: 10,

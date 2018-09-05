@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Platform, StyleSheet,Button, Text, View,TextInput, ScrollView, TouchableOpacity} from 'react-native';
+import React, { Component } from 'react';
+import { Platform, StyleSheet, Button, Text, View, TextInput, ScrollView, TouchableOpacity } from 'react-native';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -28,42 +28,45 @@ export default class RescueMoreInfoScreen extends Component<Props> {
   };
   render() {
     return (
-        <View style={styles.container1}>
-        
-           <View style={styles.container}>
+      <View style={styles.container1}>
+        <ScrollView>
+          <View style={styles.container}>
             <Text style={styles.description}>No. of people:</Text>
             <Text style={styles.description}>Pin point your rescue location in the map</Text>
-            </View>
-
-           <View style={styles.container}>
-           <ScrollView>
-           <TextInput
+          </View>
+          <View style={styles.container}>
+            <ScrollView>
+              <TextInput
                 underlineColorAndroid={'transparent'}
                 style={styles.searchInput}
-                placeholder='Enter you current situation and details to your rescuer...'/>        
+                placeholder='Enter you current situation and details to your rescuer...' />
             </ScrollView >
-           </View>
-           <Button
-                onPress={() => this.props.navigation.navigate("RescueInfo")}
-                color='white'
-                title='Submit'/>
-           </View>
+          </View>
+          <Button
+            onPress={() => this.props.navigation.navigate("RescueInfo")}
+            color='white'
+            title='Submit' />
+        </ScrollView>
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-   flex:1,
-   padding: 30,
-   marginTop: 10
+    flex: 1,
+    paddingTop: 15,
+    backgroundColor: 'red',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   container1: {
-    flex:1,
+    flex: 1,
     padding: 30,
     marginTop: 10
-   },
-   button:{
+  },
+  button: {
     backgroundColor: 'red',
     borderColor: '#ff6600',
     borderWidth: 1,
@@ -75,10 +78,10 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.75,
     shadowRadius: 1,
     shadowColor: 'gray',
-    shadowOffset: { height: 0, width: 0},
+    shadowOffset: { height: 0, width: 0 },
     marginTop: 20,
     marginBottom: 20
-   },
+  },
   description: {
     marginBottom: 10,
     fontSize: 18,
@@ -100,19 +103,19 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     color: '#48BBEC',
   },
-  header:{
+  header: {
 
   },
-  headerText:  {
+  headerText: {
 
   },
-  scrollContainer:{
+  scrollContainer: {
 
   },
-  footer:{
+  footer: {
 
   },
-  textInput:{
+  textInput: {
 
   }
 });

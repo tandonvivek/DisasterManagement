@@ -51,9 +51,14 @@ export default class RescueScreen extends Component<Props> {
               style={styles.comment}
               placeholder='Enter comments' />
           </View>
-          <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate("RescueInfo")}>
-            <Image source={require("../assets/rescueMe.png")} />
-          </TouchableOpacity>
+          <View style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+            <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate("RescueInfo")}>
+              <Image source={require("../assets/rescueMe.png")} />
+            </TouchableOpacity>
+          </View>
         </ScrollView >
       </View>
     );
@@ -63,7 +68,7 @@ export default class RescueScreen extends Component<Props> {
 const styles = StyleSheet.create({
   resInput: {
     fontSize: 18,
-    width: '72%',
+    width: '64%',
     height: '82%',
     borderWidth: 1,
     borderColor: '#48BBEC',
@@ -90,21 +95,26 @@ const styles = StyleSheet.create({
   },
   textFont1: {
     fontSize: 18,
+    marginRight: 30,
+    flexWrap: 'nowrap',
     color: 'white',
-    width: 100,
+    width: 110,
     fontWeight: 'bold'
   },
   container1: {
-    flex: 1,
-    padding: 5
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   container: {
     flex: 1,
-    backgroundColor: 'red'
+    paddingTop: 15,
+    backgroundColor: 'red',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
-  button: {
+  buttonView: {
     marginTop: 250,
-    marginLeft: 135,
     backgroundColor: 'white',
     borderColor: '#ff6600',
     borderWidth: 1,
@@ -113,9 +123,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
+  button: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 250,
+    backgroundColor: 'white',
+    borderColor: '#ff6600',
+    borderWidth: 1,
+    width: 120,
+    borderRadius: 10,
+    flexGrow: 1,
+  },
   comment: {
     fontSize: 18,
-    width: '72%',
+    width: '64%',
     height: '82%',
     borderWidth: 1,
     borderColor: '#48BBEC',
@@ -142,20 +163,5 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     color: 'black',
     backgroundColor: 'white'
-  },
-  header: {
-
-  },
-  headerText: {
-
-  },
-  scrollContainer: {
-
-  },
-  footer: {
-
-  },
-  textInput: {
-
   }
 });

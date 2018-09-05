@@ -43,51 +43,53 @@ export default class HomeScreen extends Component<Props> {
   };
   render() {
     //const {navigate} = this.props.navigation;
-    const {state} = this.props.navigation;
+    const { state } = this.props.navigation;
     var name = state.params ? state.params.name : "<undefined>";
     var login = name.login ? name.login : false;
     return (
-     
-      
-      <View style={styles.container}>
-        {name.login == true ?
-          <View style={styles.authBtn}>
-            <Text>{name.loginRegMsg}</Text>
-          </View>
-          : null}
-        <View style={styles.buttonRow}>
-          <TouchableOpacity style={styles.buttonLeft} onPress={() => this.props.navigation.navigate("Rescue")}>
-            <Image source={require("../assets/provideHelp.png")} />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate("getHelp")}>
-            <Image source={require("../assets/getHelp.png")} />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.buttonRow}>
-          <TouchableOpacity style={styles.buttonLeft} onPress={() => this.props.navigation.navigate("Disasters")}>
-            <Image source={require("../assets/info.png")} />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonRight} onPress={() => this.props.navigation.navigate("faq")}>
-            <Image source={require("../assets/faq.png")} />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.panicBtn}>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate("Rescue")}>
-            <Image source={require("../assets/sos.png")} />
-          </TouchableOpacity>
-        </View>
 
-        {login == false ?
-          <View style={styles.authBtn}>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate("Login")}>
-              <Image source={require("../assets/signIn.png")} />
+
+      <View style={styles.container}>
+        <ScrollView >
+          {name.login == true ?
+            <View style={styles.authBtn}>
+              <Text>{name.loginRegMsg}</Text>
+            </View>
+            : null}
+          <View style={styles.buttonRow}>
+            <TouchableOpacity style={styles.buttonLeft} onPress={() => this.props.navigation.navigate("Rescue")}>
+              <Image source={require("../assets/provideHelp.png")} />
             </TouchableOpacity>
-            <Text>   OR   </Text>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate("Register")}>
-              <Image source={require("../assets/register.png")} />
+            <TouchableOpacity onPress={() => this.props.navigation.navigate("getHelp")}>
+              <Image source={require("../assets/getHelp.png")} />
             </TouchableOpacity>
           </View>
-          : null}
+          <View style={styles.buttonRow}>
+            <TouchableOpacity style={styles.buttonLeft} onPress={() => this.props.navigation.navigate("Disasters")}>
+              <Image source={require("../assets/info.png")} />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.buttonRight} onPress={() => this.props.navigation.navigate("faq")}>
+              <Image source={require("../assets/faq.png")} />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.panicBtn}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate("Rescue")}>
+              <Image source={require("../assets/sos.png")} />
+            </TouchableOpacity>
+          </View>
+
+          {login == false ?
+            <View style={styles.authBtn}>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate("Login")}>
+                <Image source={require("../assets/signIn.png")} />
+              </TouchableOpacity>
+              <Text>   OR   </Text>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate("Register")}>
+                <Image source={require("../assets/register.png")} />
+              </TouchableOpacity>
+            </View>
+            : null}
+        </ScrollView>
       </View >
     );
   }
@@ -96,9 +98,11 @@ export default class HomeScreen extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 10,
+    paddingTop: 15,
     backgroundColor: 'red',
-    padding: 30
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   container1: {
     flex: 1,

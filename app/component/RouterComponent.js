@@ -7,6 +7,7 @@ import RescueMoreInfoScreen from "./RescueMoreInfoScreen";
 import RegisterScreen from './RegisterScreen';
 import LoginScreen from './LoginScreen';
 import DisastersScreen from './DisastersScreen';
+import ProvideHlpScrn from './ProvideHlpScrn';
 
 const RouterComponent = StackNavigator(
   {
@@ -24,12 +25,21 @@ const RouterComponent = StackNavigator(
         },
       }
     },
+    ProvideHlp: {
+      screen: ProvideHlpScrn,
+      navigationOptions: {
+        headerStyle: {
+          backgroundColor: 'red',
+
+        }
+      }
+    },
     Rescue: {
       screen: RescueScreen,
       navigationOptions: {
         headerStyle: {
-          backgroundColor: 'brown',
-          
+          backgroundColor: 'red',
+
         }
       }
     },

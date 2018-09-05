@@ -43,8 +43,9 @@ export default class DisastersScreen extends Component<Props> {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Disaster screen:</Text>
-               
+                <ScrollView>
+                    <Text>Disaster screen:</Text>
+                </ScrollView>
             </View>
         );
     }
@@ -89,36 +90,13 @@ const styles = StyleSheet.create({
         borderColor: '#3B5699',
         borderWidth: 2
     },
-    buttonBlueText: {
-        fontSize: 20,
-        color: '#3B5699'
-    },
-    buttonBigText: {
-        fontSize: 20,
-        fontWeight: 'bold'
-    },
-    inline: {
-        flexDirection: 'row'
-    },
-    buttonWhiteText: {
-        fontSize: 20,
-        color: '#FFF',
-    },
-    buttonBlackText: {
-        fontSize: 20,
-        color: '#595856'
-    },
-    primaryButton: {
-        backgroundColor: '#34A853'
-    },
-    footer: {
-        marginTop: 100
-    },
     container: {
         flex: 1,
-        marginTop: 10,
+        paddingTop: 15,
         backgroundColor: 'red',
-        color: 'red',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     container1: {
         flex: 1,
@@ -178,23 +156,6 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         color: 'black',
         backgroundColor: 'white',
-    },
-    header: {
-
-    },
-    label: {
-        width: 100,
-        marginLeft: 0,
-        color: 'black',
-        fontSize: 18
-    },
-    scrollContainer: {
-
-    },
-    footer: {
-
-    },
-    textInput: {
-
     }
+
 });
