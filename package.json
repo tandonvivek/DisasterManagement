@@ -10,6 +10,7 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.0",
     "babel-preset-react-native": "^4.0.0",
+    "haversine": "^1.1.0",
     "react": "16.4.1",
     "react-native": "^0.55.4",
     "react-native-maps": "^0.21.0",

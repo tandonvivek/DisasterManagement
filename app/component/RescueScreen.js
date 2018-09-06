@@ -1,15 +1,92 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Button, Text, View, TextInput, Image, ScrollView, TouchableOpacity } from 'react-native';
+import MapView, { Marker, AnimatedRegion, Polyline } from "react-native-maps";
+import haversine from "haversine";
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+const LATITUDE = 29.95539;
+const LONGITUDE = 78.07513;
+const LATITUDE_DELTA = 0.009;
+const LONGITUDE_DELTA = 0.009;
 
-type Props = {};
-export default class RescueScreen extends Component<Props> {
+//{this.state.lastPosition} for the current postion
+ export default class RescueScreen extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      latitude: LATITUDE,
+      longitude: LONGITUDE,
+      routeCoordinates: [],
+      distanceTravelled: 0,
+      prevLatLng: {},
+      coordinate: new AnimatedRegion({
+        latitude: LATITUDE,
+        longitude: LONGITUDE
+      })
+    };
+  }
+  componentWillMount() {
+    navigator.geolocation.getCurrentPosition(
+      position => {},
+      error => alert(error.message),
+      {
+        enableHighAccuracy: false,
+        timeout: 25000,
+        maximumAge: 3600000
+      }
+    );
+  }
+   componentDidMount() {
+    const { coordinate } = this.state;
+      this.watchID = navigator.geolocation.watchPosition(
+      position => {
+        const { coordinate, routeCoordinates, distanceTravelled } = this.state;
+        const { latitude, longitude } = position.coords;
+
+        const newCoordinate = {
+          latitude,
+          longitude
+        };
+
+        if (Platform.OS === "android") {
+          if (this.marker) {
+            this.marker._component.animateMarkerToCoordinate(
+              newCoordinate,
+              500
+            );
+          }
+        } else {
+          coordinate.timing(newCoordinate).start();
+        }
+        const lastPosition = JSON.stringify(position);
+        this.setState({
+          latitude,
+          longitude,
+          routeCoordinates: routeCoordinates.concat([newCoordinate]),
+          distanceTravelled:
+            distanceTravelled + this.calcDistance(newCoordinate),
+          prevLatLng: newCoordinate
+        });
+      },
+      error => console.log(error),
+      { enableHighAccuracy: false, timeout: 20000, maximumAge: 1000}
+    );
+  }
+
+  calcDistance = newLatLng => {
+    const { prevLatLng } = this.state;
+    return haversine(prevLatLng, newLatLng) || 0;
+  };
+  componentWillUnmount() {
+    navigator.geolocation.clearWatch(this.watchID);
+ }
+
+  getMapRegion = () => ({
+    latitude: this.state.latitude,
+    longitude: this.state.longitude,
+    latitudeDelta: LATITUDE_DELTA,
+    longitudeDelta: LONGITUDE_DELTA
+  });
   static navigationOptions = {
     title: 'RESCUE ME',
     headerTintColor: 'white',
@@ -50,7 +127,22 @@ export default class RescueScreen extends Component<Props> {
               underlineColorAndroid={'transparent'}
               style={styles.comment}
               placeholder='Enter comments' />
+              
           </View>
+          <MapView
+                style={styles.map}
+                showUserLocation
+                followUserLocation
+                loadingEnabled
+                region={this.getMapRegion()}
+              >
+            <Polyline coordinates={this.state.routeCoordinates} strokeWidth={5} />
+            <Marker.Animated 
+              ref={marker => {
+                this.marker = marker;
+              }}
+              coordinate={this.state.coordinate} />
+          </MapView>
           <View style={{
             justifyContent: 'center',
             alignItems: 'center',
@@ -126,7 +218,7 @@ const styles = StyleSheet.create({
   button: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 250,
+    marginTop: 360,
     backgroundColor: 'white',
     borderColor: '#ff6600',
     borderWidth: 1,
@@ -163,5 +255,24 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     color: 'black',
     backgroundColor: 'white'
-  }
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject,
+    marginTop:300,
+    width:'100%',
+    height:300,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  bubble: {
+    flex: 1,
+    backgroundColor: "rgba(255,255,255,0.7)",
+    paddingHorizontal: 18,
+    paddingVertical: 12,
+    borderRadius: 20
+  },
+  latlng: {
+    width: 200,
+    alignItems: "stretch"
+  },
 });
