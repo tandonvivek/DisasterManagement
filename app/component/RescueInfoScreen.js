@@ -36,17 +36,17 @@ export default class RescueInfoScreen extends Component<Props> {
           </Text>
           </View>
 
-          {/* <View style={styles.container1}>
+          <View style={styles.container1}>
             <Text style={styles.description}>It’s better to provide more details about your situation. Do you want to do it now?</Text>
             <View style={styles.buttonRow}>
-              <TouchableOpacity style={styles.buttonLeft} onPress={() => this.props.navigation.navigate("RescueMoreInfo")}>
+              <TouchableOpacity style={styles.btnStyl} onPress={() => this.props.navigation.navigate("RescueMoreInfo")}>
                 <Image source={require("../assets/yes_icon.png")} />
               </TouchableOpacity>
-              <TouchableOpacity style={styles.buttonRight} onPress={null}>
+              <TouchableOpacity style={styles.btnStyl} onPress={null}>
                 <Image source={require("../assets/no_icon.png")} />
               </TouchableOpacity>
             </View>
-          </View> */}
+          </View>
         </ScrollView>
       </View>
     );
@@ -54,6 +54,10 @@ export default class RescueInfoScreen extends Component<Props> {
 }
 
 const styles = StyleSheet.create({
+  btnStyl: {
+    paddingLeft: 10,
+    marginLeft: 20
+  },
   buttonLeft: {
     marginLeft: 0,
     width: '90%',
@@ -67,7 +71,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 15,
-    backgroundColor: 'red',
+    backgroundColor: '#8dc63f',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center'

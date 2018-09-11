@@ -126,8 +126,7 @@ export default class RegisterScreen extends Component<Props> {
 const styles = StyleSheet.create({
     smallBtn: {
         marginLeft: 5,
-        backgroundColor: '#80ff00',
-        borderColor: '#ff6600',
+        backgroundColor: '#6C99D3',
         borderWidth: 1,
         width: 95,
         height: 40,
@@ -200,7 +199,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingTop:15,
-        backgroundColor: 'red',
+        backgroundColor: '#8dc63f',
         flexDirection:'column',
         alignItems:'center',
         justifyContent:'center',

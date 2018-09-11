@@ -10,7 +10,7 @@ const instructions = Platform.select({
 });
 
 type Props = {};
-export default class DisastersScreen extends Component<Props> {
+export default class Kerala extends Component<Props> {
     constructor(props) {
         super(props);
         this.state = {
@@ -18,7 +18,7 @@ export default class DisastersScreen extends Component<Props> {
         };
     }
     static navigationOptions = {
-        title: 'PROVIDE HELP',
+        title: 'KERALA FLOODS',
         headerTintColor: 'white',
         headerstyle: {
             backgroundColor: 'rgb(47, 54, 61)',
@@ -37,15 +37,17 @@ export default class DisastersScreen extends Component<Props> {
         return (
             <View style={styles.container}>
                 <ScrollView>
-                <Text style={styles.textStyl}>Disasters Near You</Text>
-                    <View style={styles.btnsContainer}>
-                        <TouchableOpacity style={styles.buttonStyl} onPress={() => this.props.navigation.navigate("Kerala")} >
-                            <Text style={styles.btnText}>Kerala Flood</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonStyl} onPress={() => this.props.navigation.navigate("Coorg")} >
-                            <Text style={styles.btnText}>Coorg Landslides</Text>
+                    <Text style={styles.textFont1}>Search:</Text>
+                    <View style={styles.buttonRow}>
+                    <TextInput style={styles.loginInput}
+                        value={this.state.username}
+                        onChangeText={(username) => this.setState({ username })}
+                        placeholder={'Username'} />
+                        <TouchableOpacity style={styles.img} onPress={null} >
+                            <Image source={require("../assets/search.png")} />
                         </TouchableOpacity>
                     </View>
+
                 </ScrollView>
             </View>
         );
@@ -56,7 +58,31 @@ const styles = StyleSheet.create({
     btnText: {
         color: 'white',
         fontSize: 18,
-
+    },
+    img:{
+        width:50,
+        height:50
+    },
+    smallBtn: {
+        marginLeft: 5,
+        backgroundColor: '#80ff00',
+        borderColor: '#ff6600',
+        borderWidth: 1,
+        width: 95,
+        height: 40,
+        borderRadius: 10,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    loginInputSmall: {
+        fontSize: 18,
+        width: '80%',
+        height: '82%',
+        borderWidth: 1,
+        borderColor: '#48BBEC',
+        borderRadius: 8,
+        color: 'black',
+        backgroundColor: 'white'
     },
     textFont: {
         fontSize: 24,
@@ -66,14 +92,15 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontWeight: 'bold'
     },
-    textStyl: {
-        fontSize: 25,
+    or: {
+        fontSize: 20,
         marginLeft: 10,
         color: 'white',
-        marginTop: 20,
+        marginTop: 10,
         textAlign: 'center',
-        fontWeight: 'bold'
-        },
+        fontWeight: 'bold',
+        marginTop: 70
+    },
     textFont1: {
         fontSize: 18,
         color: 'white',
@@ -136,7 +163,8 @@ const styles = StyleSheet.create({
         padding: 20,
         margin: 20,
         marginLeft: 30,
-        backgroundColor: '#6C99D3',
+        backgroundColor: 'orange',
+        borderColor: '#ff6600',
         borderWidth: 1,
         width: 300,
         height: 37,

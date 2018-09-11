@@ -8,6 +8,8 @@ import RegisterScreen from './RegisterScreen';
 import LoginScreen from './LoginScreen';
 import DisastersScreen from './DisastersScreen';
 import ProvideHlpScrn from './ProvideHlpScrn';
+import Kerala from './Kerala';
+import Coorg from './Coorg';
 
 const RouterComponent = StackNavigator(
   {
@@ -15,7 +17,7 @@ const RouterComponent = StackNavigator(
       screen: HomeScreen,
       navigationOptions: {
         headerStyle: {
-          backgroundColor: 'red'
+          backgroundColor: '#8dc63f'
         },
         headerTitleStyle: {
           fontWeight: 'bold',
@@ -29,8 +31,7 @@ const RouterComponent = StackNavigator(
       screen: ProvideHlpScrn,
       navigationOptions: {
         headerStyle: {
-          backgroundColor: 'red',
-
+          backgroundColor: '#8dc63f',
         }
       }
     },
@@ -38,7 +39,25 @@ const RouterComponent = StackNavigator(
       screen: RescueScreen,
       navigationOptions: {
         headerStyle: {
-          backgroundColor: 'red',
+          backgroundColor: '#8dc63f',
+
+        }
+      }
+    },
+    Kerala: {
+      screen: Kerala,
+      navigationOptions: {
+        headerStyle: {
+          backgroundColor: '#8dc63f',
+
+        }
+      }
+    },
+    Coorg: {
+      screen: Coorg,
+      navigationOptions: {
+        headerStyle: {
+          backgroundColor: '#8dc63f',
 
         }
       }
@@ -47,7 +66,7 @@ const RouterComponent = StackNavigator(
       screen: RescueInfoScreen,
       navigationOptions: {
         headerStyle: {
-          backgroundColor: 'red'
+          backgroundColor: '#8dc63f'
         }
       }
     },
@@ -55,7 +74,7 @@ const RouterComponent = StackNavigator(
       screen: RescueMoreInfoScreen,
       navigationOptions: {
         headerStyle: {
-          backgroundColor: 'red'
+          backgroundColor: '#8dc63f'
         }
       }
     },
@@ -63,7 +82,7 @@ const RouterComponent = StackNavigator(
       screen: LoginScreen,
       navigationOptions: {
         headerStyle: {
-          backgroundColor: 'red'
+          backgroundColor: '#8dc63f'
         }
       }
     },
@@ -72,7 +91,7 @@ const RouterComponent = StackNavigator(
       screen: RegisterScreen,
       navigationOptions: {
         headerStyle: {
-          backgroundColor: 'red'
+          backgroundColor: '#8dc63f'
         }
       }
     },
@@ -80,7 +99,7 @@ const RouterComponent = StackNavigator(
       screen: DisastersScreen,
       navigationOptions: {
         headerStyle: {
-          backgroundColor: 'red'
+          backgroundColor: '#8dc63f'
         }
       }
     }

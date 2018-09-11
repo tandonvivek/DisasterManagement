@@ -81,7 +81,7 @@ export default class HomeScreen extends Component<Props> {
           {login == false ?
             <View style={styles.authBtn}>
               <TouchableOpacity onPress={() => this.props.navigation.navigate("Login")}>
-                <Image source={require("../assets/signIn.png")} />
+                <Image source={require("../assets/login.png")} />
               </TouchableOpacity>
               <Text>   OR   </Text>
               <TouchableOpacity onPress={() => this.props.navigation.navigate("Register")}>
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 15,
-    backgroundColor: 'red',
+    backgroundColor: '#8dc63f',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
@@ -109,12 +109,15 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   panicBtn: {
-    padding: 10,
-    margin: 10,
-    marginLeft: 40
+    // padding: 10,
+    // margin: 10,
+    
+    // marginLeft: 40,
+    alignItems: 'center',
   },
   authBtn: {
-    padding: 10,
+    padding: 20,
+    marginLeft: 30,
     flexDirection: 'row',
     margin: 20,
     marginLeft: 50

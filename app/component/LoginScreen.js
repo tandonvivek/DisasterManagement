@@ -108,9 +108,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     otherImg: {
-        padding: 30,
-        paddingLeft: 0,
-        marginLeft: 15
+        padding: 15
     },
     loginInput: {
         margin: 10,
@@ -136,7 +134,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         marginTop: 10,
-        backgroundColor: 'red',
+        backgroundColor: '#8dc63f',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
