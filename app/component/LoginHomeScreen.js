@@ -10,14 +10,14 @@ const instructions = Platform.select({
 });
 
 type Props = {};
-export default class HomeScreen extends Component<Props> {
+export default class LoginHomeScreen extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
       username: '',
       password: '',
       login: false,
-      loginRegMsg: ''
+      loginRegMsg: 'You have signed in successfully',
     };
   }
   onLogin() {
@@ -42,20 +42,15 @@ export default class HomeScreen extends Component<Props> {
     tintColor: '#fefefe'
   };
   render() {
-    //const {navigate} = this.props.navigation;
-    const { state } = this.props.navigation;
-    var name = state.params ? state.params.name : "<undefined>";
-    var login = name.login ? name.login : false;
+
     return (
       <View style={styles.container}>
         <ScrollView >
-          {name.login == true ?
-            <View style={styles.authBtn}>
-              <Text>{name.loginRegMsg}</Text>
-            </View>
-            : null}
+          <View style={styles.authBtn}>
+            <Text style={styles.description}>{this.state.loginRegMsg}</Text>
+          </View>
           <View style={styles.buttonRow}>
-            <TouchableOpacity style={styles.buttonLeft} onPress={() => this.props.navigation.navigate("ProvideHlp")}>
+            <TouchableOpacity style={styles.buttonLeft} onPress={() => this.props.navigation.navigate("Rescue")}>
               <Image source={require("../assets/provideHelp.png")} />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.props.navigation.navigate("getHelp")}>
@@ -76,21 +71,6 @@ export default class HomeScreen extends Component<Props> {
             </TouchableOpacity>
           </View>
 
-          {login == false ?
-            <View style={styles.authBtn}>
-              <TouchableOpacity onPress={() => this.props.navigation.navigate("Login")}>
-                <Image source={require("../assets/login.png")} />
-              </TouchableOpacity>
-              <Text style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-                color: 'white'
-              }}>   OR   </Text>
-              <TouchableOpacity onPress={() => this.props.navigation.navigate("Register")}>
-                <Image source={require("../assets/register.png")} />
-              </TouchableOpacity>
-            </View>
-            : null}
         </ScrollView>
       </View >
     );
@@ -106,6 +86,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  description: {
+    margin: 5,
+    fontSize: 18,
+    marginLeft: 10,
+    color: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   container1: {
     flex: 1,
     padding: 5,
@@ -113,7 +101,7 @@ const styles = StyleSheet.create({
   panicBtn: {
     padding: 10,
     margin: 10,
-    marginTop: 50,
+
     marginLeft: 50,
     //  alignItems: 'center',
   },
@@ -121,14 +109,13 @@ const styles = StyleSheet.create({
     padding: 20,
     marginLeft: 30,
     flexDirection: 'row',
-    marginLeft: 50,
-    marginTop: 50
+    margin: 20,
+    marginLeft: 50
   },
   buttonRow: {
-    padding: 8,
+    padding: 10,
     flexDirection: 'row',
-    margin: 15,
-    marginTop: 28
+    margin: 20
   },
   buttonLeft: {
     marginLeft: 0

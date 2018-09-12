@@ -10,7 +10,7 @@ const instructions = Platform.select({
 });
 
 type Props = {};
-export default class Coorg extends Component<Props> {
+export default class Place extends Component<Props> {
     constructor(props) {
         super(props);
         this.state = {
@@ -18,27 +18,36 @@ export default class Coorg extends Component<Props> {
         };
     }
     static navigationOptions = {
-        title: 'COORG LANDSLIDES',
+        title: 'KERALA FLOODS',
         headerTintColor: 'white',
         headerstyle: {
             backgroundColor: 'rgb(47, 54, 61)',
             shadowOpacity: 0
         },
         headertitleStyle: {
-            color: '#8dc63f',
+            color: '#fefefe',
             fontFamily: 'MuseoSansRounded-300',
             fontWeight: '300',
             justifyContent: 'space-between',
             textAlign: 'center'
         },
-        tintColor: '#8dc63f'
+        tintColor: '#fefefe'
     };
     render() {
         return (
             <View style={styles.container}>
                 <ScrollView>
-              
-                  
+                    <Text style={styles.textFont1}>Search:</Text>
+                    <View style={styles.buttonRow}>
+                        <TextInput style={styles.loginInput}
+                            value={this.state.username}
+                            onChangeText={(username) => this.setState({ username })}
+                            placeholder={'Username'} />
+                        <TouchableOpacity  onPress={null} >
+                            <Image source={require("../assets/search.png")} />
+                        </TouchableOpacity>
+                    </View>
+
                 </ScrollView>
             </View>
         );
@@ -49,7 +58,28 @@ const styles = StyleSheet.create({
     btnText: {
         color: 'white',
         fontSize: 18,
+    },
 
+    smallBtn: {
+        marginLeft: 5,
+        backgroundColor: '#80ff00',
+        borderColor: '#ff6600',
+        borderWidth: 1,
+        width: 95,
+        height: 40,
+        borderRadius: 10,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    loginInputSmall: {
+        fontSize: 18,
+        width: '80%',
+        height: '82%',
+        borderWidth: 1,
+        borderColor: '#48BBEC',
+        borderRadius: 8,
+        color: 'black',
+        backgroundColor: 'white'
     },
     textFont: {
         fontSize: 24,
@@ -86,7 +116,8 @@ const styles = StyleSheet.create({
         borderColor: '#48BBEC',
         borderRadius: 8,
         color: 'black',
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        width:300
     },
     loginContainer: {
         borderColor: '#ff6600',

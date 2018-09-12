@@ -220,7 +220,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 360,
     backgroundColor: 'white',
-    borderColor: '#ff6600',
     borderWidth: 1,
     width: 120,
     borderRadius: 10,

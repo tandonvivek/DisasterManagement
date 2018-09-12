@@ -80,7 +80,7 @@ export default class RegisterScreen extends Component<Props> {
                         <Text style={styles.textFont1}>Gender:</Text>
                         <Picker
                             style={styles.pickerStyl}
-                            selectedValue={this.state.gender} //onValueChange={null}
+                            selectedValue={this.state.gender} onValueChange={(gender) => this.setState({ gender })}
                         >
                             <Picker.Item label="Select Gender..." value="" />
                             <Picker.Item label="Male" value="male" />

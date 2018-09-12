@@ -18,7 +18,7 @@ export default class ProvideHlpScrn extends Component<Props> {
         };
     }
     static navigationOptions = {
-        title: 'COORG LANDSLIDES',
+        title: 'Provide Help',
         headerTintColor: 'white',
         headerstyle: {
             backgroundColor: 'rgb(47, 54, 61)',
@@ -37,7 +37,15 @@ export default class ProvideHlpScrn extends Component<Props> {
         return (
             <View style={styles.container}>
                 <ScrollView>
-                
+                    <TouchableOpacity style={styles.buttonStyl} onPress={() => this.props.navigation.navigate("")}>
+                        <Text  style={styles.textFont}>Create Camp</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.buttonStyl} onPress={() => this.props.navigation.navigate("")}>
+                        <Text  style={styles.textFont}>Join Camp</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.buttonStyl} onPress={() => this.props.navigation.navigate("")}>
+                        <Text style={styles.textFont}>Help Camp</Text>
+                    </TouchableOpacity>
                 </ScrollView>
             </View>
         );
@@ -52,9 +60,7 @@ const styles = StyleSheet.create({
     },
     textFont: {
         fontSize: 24,
-        marginLeft: 10,
         color: 'white',
-        marginTop: 10,
         textAlign: 'center',
         fontWeight: 'bold'
     },

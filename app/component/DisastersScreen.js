@@ -11,12 +11,12 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class DisastersScreen extends Component<Props> {
-    constructor(props) {
-        super(props);
-        this.state = {
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
 
-        };
-    }
+    //     };
+    // }
     static navigationOptions = {
         title: 'PROVIDE HELP',
         headerTintColor: 'white',
@@ -37,7 +37,7 @@ export default class DisastersScreen extends Component<Props> {
         return (
             <View style={styles.container}>
                 <ScrollView>
-                <Text style={styles.textStyl}>Disasters Near You</Text>
+                    <Text style={styles.textStyl}>Disasters Near You</Text>
                     <View style={styles.btnsContainer}>
                         <TouchableOpacity style={styles.buttonStyl} onPress={() => this.props.navigation.navigate("Kerala")} >
                             <Text style={styles.btnText}>Kerala Flood</Text>
@@ -47,6 +47,11 @@ export default class DisastersScreen extends Component<Props> {
                         </TouchableOpacity>
                     </View>
                 </ScrollView>
+                <View style={styles.buttonRow}>
+                    <TouchableOpacity style={styles.buttonStyl} onPress={() => this.props.navigation.navigate("AddtionalInfo")} >
+                        <Text style={styles.btnText}>Add additional Information</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         );
     }
@@ -73,7 +78,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         textAlign: 'center',
         fontWeight: 'bold'
-        },
+    },
     textFont1: {
         fontSize: 18,
         color: 'white',
@@ -152,7 +157,7 @@ const styles = StyleSheet.create({
     buttonRow: {
         padding: 10,
         flexDirection: 'row',
-        margin: 20
+        marginBottom: 5
     },
     buttonLeft: {
         marginLeft: 5

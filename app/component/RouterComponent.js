@@ -8,8 +8,10 @@ import RegisterScreen from './RegisterScreen';
 import LoginScreen from './LoginScreen';
 import DisastersScreen from './DisastersScreen';
 import ProvideHlpScrn from './ProvideHlpScrn';
-import Kerala from './Kerala';
-import Coorg from './Coorg';
+import Place from './Place';
+import Place2 from './Place2';
+import LoginHomeScreen from './LoginHomeScreen';
+import AdditionalInfoScreen from './AdditionalInfoScreen';
 
 const RouterComponent = StackNavigator(
   {
@@ -45,7 +47,7 @@ const RouterComponent = StackNavigator(
       }
     },
     Kerala: {
-      screen: Kerala,
+      screen: Place,
       navigationOptions: {
         headerStyle: {
           backgroundColor: '#8dc63f',
@@ -54,7 +56,7 @@ const RouterComponent = StackNavigator(
       }
     },
     Coorg: {
-      screen: Coorg,
+      screen: Place2,
       navigationOptions: {
         headerStyle: {
           backgroundColor: '#8dc63f',
@@ -78,7 +80,7 @@ const RouterComponent = StackNavigator(
         }
       }
     },
-    Login:{
+    Login: {
       screen: LoginScreen,
       navigationOptions: {
         headerStyle: {
@@ -87,16 +89,32 @@ const RouterComponent = StackNavigator(
       }
     },
     Register:
-    {
-      screen: RegisterScreen,
+      {
+        screen: RegisterScreen,
+        navigationOptions: {
+          headerStyle: {
+            backgroundColor: '#8dc63f'
+          }
+        }
+      },
+    Disasters: {
+      screen: DisastersScreen,
       navigationOptions: {
         headerStyle: {
           backgroundColor: '#8dc63f'
         }
       }
     },
-    Disasters: {
-      screen: DisastersScreen,
+    LoginHome: {
+      screen: LoginHomeScreen,
+      navigationOptions: {
+        headerStyle: {
+          backgroundColor: '#8dc63f'
+        }
+      }
+    },
+    AddtionalInfo: {
+      screen: AdditionalInfoScreen,
       navigationOptions: {
         headerStyle: {
           backgroundColor: '#8dc63f'

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Button, Text, View, Alert, TextInput, ScrollView, Image, TouchableOpacity, Container } from 'react-native';
+import { Platform, StyleSheet, Button, Text, View, TextInput, ScrollView, Image, TouchableOpacity, Container } from 'react-native';
 
 
 const instructions = Platform.select({
@@ -10,81 +10,35 @@ const instructions = Platform.select({
 });
 
 type Props = {};
-export default class LoginScreen extends Component<Props> {
+export default class Place2 extends Component<Props> {
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
-            password: '',
-            login: false
+
         };
     }
-    onLogin() {
-        const { username, password } = this.state;
-
-        //   Alert.alert('Credentials', `${username} + ${password}`);
-        fetch('https://webapp-180911204631.azurewebsites.net/')
-            .then(function (response) {
-                return Alert.alert(response);
-                //response.json()
-            })
-    }
     static navigationOptions = {
-        title: 'LOGIN',
+        title: 'COORG LANDSLIDES',
         headerTintColor: 'white',
         headerstyle: {
             backgroundColor: 'rgb(47, 54, 61)',
             shadowOpacity: 0
         },
         headertitleStyle: {
-            color: '#fefefe',
+            color: '#8dc63f',
             fontFamily: 'MuseoSansRounded-300',
             fontWeight: '300',
             justifyContent: 'space-between',
             textAlign: 'center'
         },
-        tintColor: '#fefefe'
+        tintColor: '#8dc63f'
     };
     render() {
         return (
             <View style={styles.container}>
                 <ScrollView>
-                    <View style={styles.loginContainer}>
-                        <Text style={styles.textFont1}>Username</Text>
-                        <TextInput style={styles.loginInput}
-                            value={this.state.username}
-                            onChangeText={(username) => this.setState({ username })}
-                            placeholder={'Username'} />
-                        <Text style={styles.textFont1}>Password</Text>
-                        <TextInput style={styles.loginInput}
-                            value={this.state.password}
-                            onChangeText={(password) => this.setState({ password })}
-                            placeholder={'Password'}
-                            secureTextEntry={true} />
-                        <TouchableOpacity style={styles.loginBtn} >
-                            <Button
-                                title={'Login'}
-                                onPress={() => this.onLogin()}
-                            // this.props.navigation.navigate("LoginHome")}
-                            // onPress={this.onLogin.bind(this)}
-                            />
-                        </TouchableOpacity>
-                    </View>
-
-                    <Text style={styles.or}>Or</Text>
-                    <View style={styles.container}>
-                        <View style={styles.buttonRow}>
-                            <TouchableOpacity style={styles.otherImg}>
-                                <Image source={require("../assets/fb.png")} />
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.otherImg}>
-                                <Image source={require("../assets/gp.png")} />
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.otherImg}>
-                                <Image source={require("../assets/tw.png")} />
-                            </TouchableOpacity>
-                        </View>
-                    </View>
+              
+                  
                 </ScrollView>
             </View>
         );
@@ -92,6 +46,11 @@ export default class LoginScreen extends Component<Props> {
 }
 
 const styles = StyleSheet.create({
+    btnText: {
+        color: 'white',
+        fontSize: 18,
+
+    },
     textFont: {
         fontSize: 24,
         marginLeft: 10,
@@ -99,13 +58,6 @@ const styles = StyleSheet.create({
         marginTop: 10,
         textAlign: 'center',
         fontWeight: 'bold'
-    },
-    loginContainer: {
-        paddingTop: 20,
-        margin: 10
-    },
-    loginBtn: {
-        padding: 10
     },
     or: {
         fontSize: 20,
@@ -123,7 +75,9 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     otherImg: {
-        padding: 15
+        padding: 30,
+        paddingLeft: 0,
+        marginLeft: 15
     },
     loginInput: {
         margin: 10,
@@ -133,6 +87,18 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         color: 'black',
         backgroundColor: 'white'
+    },
+    loginContainer: {
+        borderColor: '#ff6600',
+        borderWidth: 1,
+        width: 400,
+        borderRadius: 10,
+        margin: 20,
+        padding: 5,
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#ecf0f1'
     },
     container: {
         flex: 1,
@@ -157,13 +123,18 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
-    button: {
-        marginTop: 250,
-        marginLeft: 105,
-        backgroundColor: 'white',
+    btnsContainer: {
+        margin: 20,
+    },
+    buttonStyl: {
+        padding: 20,
+        margin: 20,
+        marginLeft: 30,
+        backgroundColor: 'orange',
         borderColor: '#ff6600',
         borderWidth: 1,
-        width: 120,
+        width: 300,
+        height: 37,
         borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center'

@@ -10,7 +10,7 @@ const instructions = Platform.select({
 });
 
 type Props = {};
-export default class Kerala extends Component<Props> {
+export default class AdditionalInfoScreen extends Component<Props> {
     constructor(props) {
         super(props);
         this.state = {
@@ -18,7 +18,7 @@ export default class Kerala extends Component<Props> {
         };
     }
     static navigationOptions = {
-        title: 'KERALA FLOODS',
+        title: 'PROVIDE HELP',
         headerTintColor: 'white',
         headerstyle: {
             backgroundColor: 'rgb(47, 54, 61)',
@@ -37,18 +37,29 @@ export default class Kerala extends Component<Props> {
         return (
             <View style={styles.container}>
                 <ScrollView>
-                    <Text style={styles.textFont1}>Search:</Text>
+                    <Text style={styles.textStyl}>Add General Information</Text>
+                    <Text style={styles.description}>You can add photo, video or comments of the affected area near you. These details will be geo tagged and used to provide real time updates to the public.</Text>
                     <View style={styles.buttonRow}>
-                    <TextInput style={styles.loginInput}
-                        value={this.state.username}
-                        onChangeText={(username) => this.setState({ username })}
-                        placeholder={'Username'} />
-                        <TouchableOpacity style={styles.img} onPress={null} >
-                            <Image source={require("../assets/search.png")} />
+                        <TouchableOpacity style={styles.buttonLeft} onPress={() => this.props.navigation.navigate("Disasters")}>
+                            <Image source={require("../assets/camera.png")} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.buttonRight} onPress={() => this.props.navigation.navigate("faq")}>
+                            <Image source={require("../assets/videoCam.png")} />
                         </TouchableOpacity>
                     </View>
-
+                    <View style={styles.buttonRow}>
+                        <Text style={styles.textFont1}>Comments:</Text>
+                        <TextInput
+                            underlineColorAndroid={'transparent'}
+                            style={styles.comment}
+                            placeholder='Enter comments' />
+                    </View>
                 </ScrollView>
+                <View style={styles.buttonRow}>
+                    <TouchableOpacity style={styles.buttonStyl} onPress={() => this.props.navigation.navigate("AddtionalInfo")} >
+                        <Text style={styles.btnText}>Add additional Information</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         );
     }
@@ -58,31 +69,7 @@ const styles = StyleSheet.create({
     btnText: {
         color: 'white',
         fontSize: 18,
-    },
-    img:{
-        width:50,
-        height:50
-    },
-    smallBtn: {
-        marginLeft: 5,
-        backgroundColor: '#80ff00',
-        borderColor: '#ff6600',
-        borderWidth: 1,
-        width: 95,
-        height: 40,
-        borderRadius: 10,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    loginInputSmall: {
-        fontSize: 18,
-        width: '80%',
-        height: '82%',
-        borderWidth: 1,
-        borderColor: '#48BBEC',
-        borderRadius: 8,
-        color: 'black',
-        backgroundColor: 'white'
+
     },
     textFont: {
         fontSize: 24,
@@ -92,14 +79,40 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontWeight: 'bold'
     },
-    or: {
-        fontSize: 20,
+    textFont1: {
+        fontSize: 18,
+        marginRight: 30,
+        flexWrap: 'nowrap',
+        color: 'white',
+        width: 110,
+        fontWeight: 'bold'
+    },
+    comment: {
+        fontSize: 18,
+        width: '75%',
+        height: '100%',
+        borderWidth: 1,
+        borderColor: '#48BBEC',
+        borderRadius: 8,
+        color: 'black',
+        backgroundColor: 'white',
+        height: 100,
+    },
+    textStyl: {
+        fontSize: 25,
         marginLeft: 10,
         color: 'white',
-        marginTop: 10,
+        marginTop: 20,
         textAlign: 'center',
-        fontWeight: 'bold',
-        marginTop: 70
+        fontWeight: 'bold'
+    },
+    description: {
+        margin: 5,
+        fontSize: 18,
+        marginLeft: 10,
+        color: 'white',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     textFont1: {
         fontSize: 18,
@@ -163,8 +176,7 @@ const styles = StyleSheet.create({
         padding: 20,
         margin: 20,
         marginLeft: 30,
-        backgroundColor: 'orange',
-        borderColor: '#ff6600',
+        backgroundColor: '#6C99D3',
         borderWidth: 1,
         width: 300,
         height: 37,
@@ -180,19 +192,15 @@ const styles = StyleSheet.create({
     buttonRow: {
         padding: 10,
         flexDirection: 'row',
-        margin: 20
+        margin: 10
     },
     buttonLeft: {
-        marginLeft: 5
+        marginLeft: 25,
+        padding:10
     },
     buttonRight: {
-        marginLeft: 130
-    },
-    description: {
-        marginBottom: 10,
-        fontSize: 18,
-        marginLeft: 100,
-        color: 'black'
+        marginLeft: 120,
+        padding:10
     },
     searchInput: {
         height: 45,
