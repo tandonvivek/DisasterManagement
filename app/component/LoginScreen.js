@@ -13,21 +13,53 @@ type Props = {};
 export default class LoginScreen extends Component<Props> {
     constructor(props) {
         super(props);
+        console.log("**props**" + JSON.stringify(props));
         this.state = {
             username: '',
             password: '',
-            login: false
+            login: false,
+            res: '',
+            responseJson: '',
+            authToken: ''
         };
     }
     onLogin() {
-        const { username, password } = this.state;
+        var details = {
+            'username': this.state.username,
+            'password': this.state.password,
+            'grant_type': 'password'
+        };
 
-        //   Alert.alert('Credentials', `${username} + ${password}`);
-        fetch('https://webapp-180911204631.azurewebsites.net/')
-            .then(function (response) {
-                return Alert.alert(response);
-                //response.json()
+        var formBody = [];
+        for (var property in details) {
+            var encodedKey = encodeURIComponent(property);
+            var encodedValue = encodeURIComponent(details[property]);
+            formBody.push(encodedKey + "=" + encodedValue);
+        }
+        formBody = formBody.join("&");
+        console.log("formBody" + formBody);
+        fetch('https://webapp-sahara.azurewebsites.net/oauth/token', {
+            method: 'POST',
+            headers: {
+                'grant_type': 'password',
+                'Content-Type': 'application/x-www-form-urlencoded',
+                Authorization: 'Basic ZGV2Z2xhbi1jbGllbnQ6ZGV2Z2xhbi1zZWNyZXQ='
+            },
+            body: formBody,
+        })
+            .then((response) => response.json())
+            .then((responseJson) => {
+                console.log("**Response**" + JSON.stringify(responseJson));
+                this.props.navigation.navigate("LoginHome");
+                this.setState({
+                    authToken: responseJson.access_token,
+                }, function () {
+
+                });
             })
+            .catch((error) => {
+                console.error(error);
+            });
     }
     static navigationOptions = {
         title: 'LOGIN',
@@ -64,10 +96,7 @@ export default class LoginScreen extends Component<Props> {
                         <TouchableOpacity style={styles.loginBtn} >
                             <Button
                                 title={'Login'}
-                                onPress={() => this.onLogin()}
-                            // this.props.navigation.navigate("LoginHome")}
-                            // onPress={this.onLogin.bind(this)}
-                            />
+                                onPress={() => this.onLogin()} />
                         </TouchableOpacity>
                     </View>
 

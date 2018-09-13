@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Button, Text, View, TextInput, ScrollView, Image, TouchableOpacity, Container } from 'react-native';
+import { Platform, StyleSheet, Button, Text, View,Alert, TextInput, ScrollView, Image, TouchableOpacity, Container } from 'react-native';
 
 
 const instructions = Platform.select({
@@ -18,7 +18,7 @@ export default class AdditionalInfoScreen extends Component<Props> {
         };
     }
     static navigationOptions = {
-        title: 'PROVIDE HELP',
+        title: 'ADD GENERAL INFORMATION',
         headerTintColor: 'white',
         headerstyle: {
             backgroundColor: 'rgb(47, 54, 61)',
@@ -33,12 +33,15 @@ export default class AdditionalInfoScreen extends Component<Props> {
         },
         tintColor: '#fefefe'
     };
+    addInfo(){
+        Alert.alert("Addtional Info added");
+        this.props.navigation.navigate("LoginHome_1")
+    }
     render() {
         return (
             <View style={styles.container}>
                 <ScrollView>
-                    <Text style={styles.textStyl}>Add General Information</Text>
-                    <Text style={styles.description}>You can add photo, video or comments of the affected area near you. These details will be geo tagged and used to provide real time updates to the public.</Text>
+                    <Text style={styles.description}>You can add photo, video or comments of the affected area near you. These details will be geo-tagged and used to provide real time updates to the public.</Text>
                     <View style={styles.buttonRow}>
                         <TouchableOpacity style={styles.buttonLeft} onPress={() => this.props.navigation.navigate("Disasters")}>
                             <Image source={require("../assets/camera.png")} />
@@ -56,8 +59,11 @@ export default class AdditionalInfoScreen extends Component<Props> {
                     </View>
                 </ScrollView>
                 <View style={styles.buttonRow}>
-                    <TouchableOpacity style={styles.buttonStyl} onPress={() => this.props.navigation.navigate("AddtionalInfo")} >
+                    <TouchableOpacity style={styles.buttonStyl} onPress={() => this.addInfo()} >
                         <Text style={styles.btnText}>Add additional Information</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate("LoginHome_1")}>
+                        <Image source={require("../assets/home.png")} />
                     </TouchableOpacity>
                 </View>
             </View>
@@ -89,7 +95,7 @@ const styles = StyleSheet.create({
     },
     comment: {
         fontSize: 18,
-        width: '75%',
+        width: '68%',
         height: '100%',
         borderWidth: 1,
         borderColor: '#48BBEC',
@@ -110,6 +116,7 @@ const styles = StyleSheet.create({
         margin: 5,
         fontSize: 18,
         marginLeft: 10,
+        marginTop:10,
         color: 'white',
         alignItems: 'center',
         justifyContent: 'center',
@@ -148,7 +155,6 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        marginTop: 10,
         backgroundColor: '#8dc63f',
         flexDirection: 'column',
         alignItems: 'center',
@@ -175,10 +181,10 @@ const styles = StyleSheet.create({
     buttonStyl: {
         padding: 20,
         margin: 20,
-        marginLeft: 30,
+        marginLeft: 15,
         backgroundColor: '#6C99D3',
         borderWidth: 1,
-        width: 300,
+        width: 270,
         height: 37,
         borderRadius: 10,
         alignItems: 'center',
@@ -190,17 +196,16 @@ const styles = StyleSheet.create({
         marginLeft: 60
     },
     buttonRow: {
-        padding: 10,
         flexDirection: 'row',
         margin: 10
     },
     buttonLeft: {
-        marginLeft: 25,
-        padding:10
+        marginLeft: 15,
+        padding: 10
     },
     buttonRight: {
-        marginLeft: 120,
-        padding:10
+        marginLeft: 100,
+        padding: 10
     },
     searchInput: {
         height: 45,

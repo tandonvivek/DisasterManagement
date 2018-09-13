@@ -10,15 +10,15 @@ const instructions = Platform.select({
 });
 
 type Props = {};
-export default class DisastersScreen extends Component<Props> {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
+export default class GetHelpScreen extends Component<Props> {
+    constructor(props) {
+        super(props);
+        this.state = {
 
-    //     };
-    // }
+        };
+    }
     static navigationOptions = {
-        title: 'PROBLEMS NEAR YOU',
+        title: 'Provide Help',
         headerTintColor: 'white',
         headerstyle: {
             backgroundColor: 'rgb(47, 54, 61)',
@@ -37,20 +37,13 @@ export default class DisastersScreen extends Component<Props> {
         return (
             <View style={styles.container}>
                 <ScrollView>
-                    <View>
-                        <TouchableOpacity style={styles.buttonStyl} onPress={() => this.props.navigation.navigate("Kerala")} >
-                            <Text style={styles.btnText}>Kerala Flood</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonStyl} onPress={() => this.props.navigation.navigate("Coorg")} >
-                            <Text style={styles.btnText}>Coorg Landslides</Text>
-                        </TouchableOpacity>
-                    </View>
-                </ScrollView>
-                <View style={styles.buttonRow}>
-                    <TouchableOpacity style={styles.buttonStyl} onPress={() => this.props.navigation.navigate("AddtionalInfo")} >
-                        <Text style={styles.btnText}>Add additional Information</Text>
+                    <TouchableOpacity style={styles.buttonStyl} onPress={() => this.props.navigation.navigate("Rescue")}>
+                        <Text  style={styles.textFont}>Rescue Me</Text>
                     </TouchableOpacity>
-                </View>
+                    <TouchableOpacity style={styles.buttonStyl} onPress={() => this.props.navigation.navigate("")}>
+                        <Text  style={styles.textFont}>Camp Help Request</Text>
+                    </TouchableOpacity>
+                </ScrollView>
             </View>
         );
     }
@@ -64,19 +57,18 @@ const styles = StyleSheet.create({
     },
     textFont: {
         fontSize: 24,
+        color: 'white',
+        textAlign: 'center',
+        fontWeight: 'bold'
+    },
+    or: {
+        fontSize: 20,
         marginLeft: 10,
         color: 'white',
         marginTop: 10,
         textAlign: 'center',
-        fontWeight: 'bold'
-    },
-    textStyl: {
-        fontSize: 25,
-        marginLeft: 10,
-        color: 'white',
-        marginTop: 20,
-        textAlign: 'center',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        marginTop: 70
     },
     textFont1: {
         fontSize: 18,
@@ -140,7 +132,8 @@ const styles = StyleSheet.create({
         padding: 20,
         margin: 20,
         marginLeft: 30,
-        backgroundColor: '#6C99D3',
+        backgroundColor: 'orange',
+        borderColor: '#ff6600',
         borderWidth: 1,
         width: 300,
         height: 37,
@@ -156,7 +149,7 @@ const styles = StyleSheet.create({
     buttonRow: {
         padding: 10,
         flexDirection: 'row',
-        marginBottom: 5
+        margin: 20
     },
     buttonLeft: {
         marginLeft: 5

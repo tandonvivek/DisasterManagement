@@ -160,8 +160,8 @@ const LONGITUDE_DELTA = 0.009;
 const styles = StyleSheet.create({
   resInput: {
     fontSize: 18,
-    width: '64%',
-    height: '82%',
+    width: '66%',
+    height: '80%',
     borderWidth: 1,
     borderColor: '#48BBEC',
     borderRadius: 8,
@@ -187,10 +187,10 @@ const styles = StyleSheet.create({
   },
   textFont1: {
     fontSize: 18,
-    marginRight: 30,
+    marginLeft: 10,
     flexWrap: 'nowrap',
     color: 'white',
-    width: 110,
+    width: 100,
     fontWeight: 'bold'
   },
   container1: {
@@ -227,7 +227,7 @@ const styles = StyleSheet.create({
   },
   comment: {
     fontSize: 18,
-    width: '64%',
+    width: '66%',
     height: '82%',
     borderWidth: 1,
     borderColor: '#48BBEC',

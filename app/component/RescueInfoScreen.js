@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Button, Text, View, Image, TextInput, ScrollView, TouchableOpacity } from 'react-native';
+import { Platform, StyleSheet, Button, Text, View, Image, FlatList, Alert, TextInput, ScrollView, TouchableOpacity } from 'react-native';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -10,6 +10,34 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class RescueInfoScreen extends Component<Props> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      FlatListItems: [
+        { key: '1', name: 'Camp 1', address: 'Address 1',contact:'453367889' },
+        { key: '2', name: 'Camp 2', address: 'Address 2',contact:'983376543'},
+        { key: '3', name: 'Camp 3', address: 'Address 3',contact:'563378889' }
+      ]
+    }
+  }
+
+  FlatListItemSeparator = () => {
+    return (
+      <View
+        style={{
+          height: 1,
+          width: "100%",
+          backgroundColor: "#607D8B",
+        }}
+      />
+    );
+  }
+
+  GetItem(item) {
+
+    Alert.alert(item.name+" "+item.address+" "+item.contact);
+
+  }
   static navigationOptions = {
     title: 'RESCUE ME - INFO',
     headerTintColor: 'white',
@@ -35,14 +63,26 @@ export default class RescueInfoScreen extends Component<Props> {
               Select camp to view details or map icon to see route to camp.
           </Text>
           </View>
+          <View style={styles.MainContainer}>
 
+            <FlatList
+
+              data={this.state.FlatListItems}
+
+              ItemSeparatorComponent={this.FlatListItemSeparator}
+
+              renderItem={({ item }) => <Text style={styles.item} onPress={this.GetItem.bind(this, item)}>{item.name}: {item.address},Contact:{item.contact}</Text>}
+            />
+
+
+          </View>
           <View style={styles.container1}>
             <Text style={styles.description}>It’s better to provide more details about your situation. Do you want to do it now?</Text>
             <View style={styles.buttonRow}>
               <TouchableOpacity style={styles.btnStyl} onPress={() => this.props.navigation.navigate("RescueMoreInfo")}>
                 <Image source={require("../assets/yes_icon.png")} />
               </TouchableOpacity>
-              <TouchableOpacity style={styles.btnStyl} onPress={null}>
+              <TouchableOpacity style={styles.btnStyl} onPress={() => this.props.navigation.navigate("LoginHome_1")}>
                 <Image source={require("../assets/no_icon.png")} />
               </TouchableOpacity>
             </View>
@@ -58,6 +98,23 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     marginLeft: 20
   },
+  MainContainer: {
+
+    // Setting up View inside content in Vertically center.
+    justifyContent: 'center',
+    flex: 1,
+    margin: 10
+
+  },
+
+  item: {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
+    color:'black',
+    flexWrap: 'wrap'
+  },
+
   buttonLeft: {
     marginLeft: 0,
     width: '90%',

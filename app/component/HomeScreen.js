@@ -27,17 +27,18 @@ export default class HomeScreen extends Component<Props> {
   }
   static navigationOptions = {
     headerTitle: (
-    <View style={{flex:1, flexDirection:'row', justifyContent:'center'}}>
-          <Image 
-      source={require('../assets/sahara_small.png')}/>
+      <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
+        <Image
+          source={require('../assets/sahara_small.png')} />
       </View>
-  ),
+    ),
   };
   render() {
     //const {navigate} = this.props.navigation;
     const { state } = this.props.navigation;
     var name = state.params ? state.params.name : "<undefined>";
     var login = name.login ? name.login : false;
+    console.log(this.props);
     return (
       <View style={styles.container}>
         <ScrollView >
@@ -55,7 +56,10 @@ export default class HomeScreen extends Component<Props> {
             </TouchableOpacity>
           </View>
           <View style={styles.buttonRow}>
-            <TouchableOpacity style={styles.buttonLeft} onPress={() => this.props.navigation.navigate("Disasters")}>
+            <TouchableOpacity style={{
+              marginLeft:10
+            }}
+              onPress={() => this.props.navigation.navigate("Disasters")}>
               <Image source={require("../assets/info.png")} />
             </TouchableOpacity>
             <TouchableOpacity style={styles.buttonRight} onPress={() => this.props.navigation.navigate("faq")}>
@@ -95,8 +99,6 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     backgroundColor: '#8dc63f',
     flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   container1: {
     flex: 1,
@@ -106,18 +108,16 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 10,
     marginTop: 50,
-    marginLeft: 50,
+    marginLeft: 35,
     //  alignItems: 'center',
   },
   authBtn: {
     padding: 20,
     marginLeft: 30,
     flexDirection: 'row',
-    marginLeft: 50,
     marginTop: 50
   },
   buttonRow: {
-    padding: 8,
     flexDirection: 'row',
     margin: 15,
     marginTop: 28
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     marginLeft: 0
   },
   buttonRight: {
-    marginLeft: 130
+    marginLeft: 100
   },
   searchInput: {
     height: 45,

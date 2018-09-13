@@ -10,7 +10,7 @@ const instructions = Platform.select({
 });
 
 type Props = {};
-export default class LoginHomeScreen extends Component<Props> {
+export default class LoginHomeScreen_1 extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
@@ -47,9 +47,6 @@ export default class LoginHomeScreen extends Component<Props> {
     return (
       <View style={styles.container}>
         <ScrollView >
-          <View style={styles.authBtn}>
-            <Text style={styles.description}>{this.state.loginRegMsg}</Text>
-          </View>
           <View style={styles.buttonRow}>
             <TouchableOpacity style={styles.buttonLeft} onPress={() => this.props.navigation.navigate("ProvideHlp")}>
               <Image source={require("../assets/provideHelp.png")} />
@@ -71,7 +68,6 @@ export default class LoginHomeScreen extends Component<Props> {
               <Image source={require("../assets/sos.png")} />
             </TouchableOpacity>
           </View>
-
         </ScrollView>
       </View >
     );

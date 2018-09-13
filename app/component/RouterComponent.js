@@ -11,7 +11,9 @@ import ProvideHlpScrn from './ProvideHlpScrn';
 import Place from './Place';
 import Place2 from './Place2';
 import LoginHomeScreen from './LoginHomeScreen';
+import LoginHomeScreen_1 from './LoginHomeScreen_1';
 import AdditionalInfoScreen from './AdditionalInfoScreen';
+import GetHelpScreen from './GetHelpScreen'
 
 const RouterComponent = StackNavigator(
   {
@@ -113,6 +115,23 @@ const RouterComponent = StackNavigator(
         }
       }
     },
+    LoginHome_1: {
+      screen: LoginHomeScreen_1,
+      navigationOptions: {
+        headerStyle: {
+          backgroundColor: '#8dc63f'
+        }
+      }
+    },
+    getHelp: {
+      screen: GetHelpScreen,
+      navigationOptions: {
+        headerStyle: {
+          backgroundColor: '#8dc63f'
+        }
+      }
+    },
+    
     AddtionalInfo: {
       screen: AdditionalInfoScreen,
       navigationOptions: {

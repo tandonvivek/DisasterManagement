@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Button, Text, Image, View, Picker, TextInput, ScrollView, TouchableOpacity } from 'react-native';
+import { Platform, StyleSheet, Button, Text, Alert,Image, View, Picker, TextInput, ScrollView, TouchableOpacity } from 'react-native';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -13,14 +13,30 @@ export default class RescueMoreInfoScreen extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      noOfPpl: 'no',
-      othersNeedHlp: 'no',
-      electrAvl: 'no',
-      foodAvl: 'no',
-      medHelp: 'no',
-      anySeniorCtz: 'no',
-      anyKids: 'no'
+      noOfPpl: '',
+      othersNeedHlp: '',
+      electrAvl: '',
+      foodAvl: '',
+      medHelp: '',
+      anySeniorCtz: '',
+      anyKids: ''
     };
+  }
+  onReset() {
+    this.setState({
+      noOfPpl: '',
+      othersNeedHlp: '',
+      electrAvl: '',
+      foodAvl: '',
+      medHelp: '',
+      anySeniorCtz: '',
+      anyKids: ''
+    }, function () {
+    });
+  }
+  addInfo(){
+      Alert.alert("Information added");
+      this.props.navigation.navigate("LoginHome_1")
   }
   static navigationOptions = {
     title: 'RESCUE ME - MORE INFO',
@@ -126,11 +142,11 @@ export default class RescueMoreInfoScreen extends Component<Props> {
           </View>
           <View style={styles.buttonRow1}>
             <TouchableOpacity style={styles.btnPadding}>
-              <Image source={require("../assets/update.png")} />
+              <Image source={require("../assets/update.png")}  onPress={() => this.addInfo()}/>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.btnPadding}>
-              <Image source={require("../assets/reset.png")} />
-            </TouchableOpacity>
+            {/* <TouchableOpacity style={styles.btnPadding}>
+              <Image source={require("../assets/reset.png")} onPress={() => this.onReset()} />
+            </TouchableOpacity> */}
           </View>
         </ScrollView>
       </View>

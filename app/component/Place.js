@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Button, Text, View, TextInput, ScrollView, Image, TouchableOpacity, Container } from 'react-native';
+import Mapbox from '@mapbox/react-native-mapbox-gl';
 
+Mapbox.setAccessToken('pk.eyJ1IjoiZGFyc2hpbml2cyIsImEiOiJjam0wN3I4czMyOW1yM3BwNGo3eHAzcW1vIn0.xH_7D6sJHOyR64R3jtnTcw');
 
 const instructions = Platform.select({
     ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -18,7 +20,7 @@ export default class Place extends Component<Props> {
         };
     }
     static navigationOptions = {
-        title: 'KERALA FLOODS',
+        title: 'KERALA',
         headerTintColor: 'white',
         headerstyle: {
             backgroundColor: 'rgb(47, 54, 61)',
@@ -33,32 +35,79 @@ export default class Place extends Component<Props> {
         },
         tintColor: '#fefefe'
     };
-    render() {
+    renderAnnotations () {
         return (
-            <View style={styles.container}>
-                <ScrollView>
-                    <Text style={styles.textFont1}>Search:</Text>
-                    <View style={styles.buttonRow}>
-                        <TextInput style={styles.loginInput}
-                            value={this.state.username}
-                            onChangeText={(username) => this.setState({ username })}
-                            placeholder={'Username'} />
-                        <TouchableOpacity  onPress={null} >
-                            <Image source={require("../assets/search.png")} />
-                        </TouchableOpacity>
-                    </View>
-
-                </ScrollView>
+          <Mapbox.PointAnnotation
+            key='pointAnnotation'
+            id='pointAnnotation'
+            coordinate={[9.932, 76.259]}>
+    
+            <View style={styles.annotationContainer}>
+              <View style={styles.annotationFill} />
             </View>
+            <Mapbox.Callout title='Look! An annotation!' />
+          </Mapbox.PointAnnotation>
+        )
+      }
+    
+      render() {
+        return (
+          <View style={styles.container2}>
+            <Mapbox.MapView
+                styleURL={Mapbox.StyleURL.Street}
+                zoomLevel={8}
+                centerCoordinate={[9.930, 76.257]}
+                style={styles.container2}
+                >
+                {this.renderAnnotations()}
+            </Mapbox.MapView>
+          </View>
         );
-    }
-}
+      }}
+    // render() {
+    //     return (
+    //         <View style={styles.container}>
+    //             <ScrollView>
+    //                 <Text style={styles.textFont1}>Search:</Text>
+    //                 <View style={styles.buttonRow}>
+    //                     <TextInput style={styles.loginInput}
+    //                         value={this.state.username}
+    //                         onChangeText={(username) => this.setState({ username })}
+    //                         placeholder={'Username'} />
+    //                     <TouchableOpacity  onPress={null} >
+    //                         <Image source={require("../assets/search.png")} />
+    //                     </TouchableOpacity>
+    //                 </View>
+
+    //             </ScrollView>
+    //         </View>
+    //     );
+  //  }
+//}
 
 const styles = StyleSheet.create({
     btnText: {
         color: 'white',
         fontSize: 18,
     },
+    container2: {
+        flex: 1,
+      },
+      annotationContainer: {
+        width: 30,
+        height: 30,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'white',
+        borderRadius: 15,
+      },
+      annotationFill: {
+        width: 30,
+        height: 30,
+        borderRadius: 15,
+        backgroundColor: 'orange',
+        transform: [{ scale: 0.6 }],
+      },
 
     smallBtn: {
         marginLeft: 5,
