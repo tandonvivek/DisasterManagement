@@ -26,20 +26,12 @@ export default class HomeScreen extends Component<Props> {
     Alert.alert('Credentials', `${username} + ${password}`);
   }
   static navigationOptions = {
-    title: 'SAHARA',
-    headerTintColor: 'white',
-    headerstyle: {
-      backgroundColor: 'rgb(47, 54, 61)',
-      shadowOpacity: 0
-    },
-    headertitleStyle: {
-      color: '#fefefe',
-      fontFamily: 'MuseoSansRounded-300',
-      fontWeight: '300',
-      justifyContent: 'space-between',
-      textAlign: 'center'
-    },
-    tintColor: '#fefefe'
+    headerTitle: (
+    <View style={{flex:1, flexDirection:'row', justifyContent:'center'}}>
+          <Image 
+      source={require('../assets/sahara_small.png')}/>
+      </View>
+  ),
   };
   render() {
     //const {navigate} = this.props.navigation;
